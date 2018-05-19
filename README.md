@@ -1,2 +1,3 @@
-# doob_bot
-A Raider.io bot for discord
+# Doob Bot
+
+A simple Raider.io bot for discord
