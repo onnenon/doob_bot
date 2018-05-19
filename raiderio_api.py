@@ -25,7 +25,7 @@ API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
 
 
-def get_character(name: str, realm: str=None, region: str="US", fields: list=None):
+def get_character(name: str, realm: str=None, region: str="US", fields: list=[]):
     """ Return Character Info from Raider.io """
     realm = html.escape(realm)
     field_str = ""
