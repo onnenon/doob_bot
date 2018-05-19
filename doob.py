@@ -6,6 +6,7 @@
 
 import asyncio
 import datetime
+import time
 
 import discord
 from discord.ext import commands
@@ -23,7 +24,7 @@ PREFIX_LIST = ['#info', '#ioscore']
 bot = commands.Bot(command_prefix="#")
 
 embed = discord.Embed(title="Doob Bot", colour=discord.Colour(0x52472b), url="https://discordapp.com",
-                      description="A shitty Discord bot for getting Raider.io Data", timestamp=datetime.datetime.utcfromtimestamp(1526713815))
+                      description="A shitty Discord bot for getting Raider.io Data", timestamp=datetime.datetime.utcfromtimestamp(time.time()))
 
 
 @bot.event
