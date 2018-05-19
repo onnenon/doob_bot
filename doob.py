@@ -7,19 +7,21 @@
 import asyncio
 import datetime
 import time
+import copy
 
 import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
-from spylogger import get_logger
 
 from raiderio_api import get_character
 from utils import emify_info, pretty_string
+from char_api import char_api_request
 
 from secrets import BOT_TOKEN
 
 
-PREFIX_LIST = ['#info', '#ioscore']
+CHAR_PREFIX = ['#info', '#ioscore']
+MYTHIC_PLUS_PREFIX = []
 
 bot = commands.Bot(command_prefix="#")
 
@@ -33,40 +35,25 @@ async def on_ready():
     print("With the ID: {}".format(bot.user.id))
 
 
-@bot.command(pass_context=True)
-async def ping(ctx):
-    await bot.say(":ping_pong: ping!!")
-
-
 @bot.event
 async def on_message(message):
     # Split the message into a list
     args = message.content.split(" ")
 
     # If first index of that list is in the defined prefixes prep the message
-    if args[0] in PREFIX_LIST:
+    if args[0] in CHAR_PREFIX or args[0] in MYTHIC_PLUS_PREFIX:
         prefix = args.pop(0)
-        arg_fix = [arg.replace("_", " ") for arg in args]
+        arg_fix = [arg.replace("_", "-") for arg in args]
 
-        if len(arg_fix) == 2:
-            user_info = get_character(arg_fix[0], arg_fix[1])
+        if prefix in CHAR_PREFIX:
+            try:
+                em = char_api_request(arg_fix, prefix, copy.copy(embed))
+                return await bot.send_message(message.channel, embed=em)
+            except:
+                return await bot.send_message(message.channel, "Error!")
 
-        elif len(arg_fix) == 3:
-            user_info = get_character(arg_fix[0], arg_fix[1], arg_fix[2])
-
-        # Gets character Info
-        if prefix == '#info':
-            if(user_info is not None):
-                return await bot.send_message(message.channel, embed=emify_info(embed, **user_info))
-            else:
-                await bot.send_message(message.channel, "Error!")
-
-        # Gets character IO Score
-        if prefix == '#ioscore':
-            if(user_info is not None):
-                return await bot.send_message(message.channel, embed=emify_info(embed, **user_info))
-            else:
-                await bot.send_message(message.channel, "Error!")
+        if prefix in MYTHIC_PLUS_PREFIX:
+            pass
 
 
 bot.run(BOT_TOKEN)

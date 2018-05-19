@@ -1,20 +1,5 @@
 """
-    Return Data Structure
-    {
-        'name': 'Doobleykah',
-        'race': 'Night Elf',
-        'class': 'Druid',
-        'active_spec_name': 'Restoration',
-        'active_spec_role': 'HEALING',
-        'gender': 'male',
-        'faction': 'alliance',
-        'achievement_points': 8190,
-        'honorable_kills': 1859,
-        'thumbnail_url': 'https://render-us.worldofwarcraft.com/character/shattered-hand/225/135521505-avatar.jpg?alt=wow/static/images/2d/avatar/4-0.jpg',
-        'region': 'us',
-        'realm': 'Shattered Hand',
-        'profile_url': 'https://raider.io/characters/us/shattered-hand/Doobleykah'
-    }
+Raider.io API info at https://raider.io/api#!/
 """
 
 import html
@@ -27,7 +12,7 @@ HEADERS = {'Content-Type': 'application/json'}
 
 def get_character(name: str, realm: str=None, region: str="US", fields: list=[]):
     """ Return Character Info from Raider.io """
-    realm = html.escape(realm)
+
     field_str = ""
     if len(fields) > 0:
         field_str += "&fields="
@@ -40,5 +25,6 @@ def get_character(name: str, realm: str=None, region: str="US", fields: list=[])
     response = requests.get(api_url, headers=HEADERS)
 
     if response.status_code == 200:
+        print(json.loads(response.content.decode('utf-8')))
         return json.loads(response.content.decode('utf-8'))
     return None
