@@ -23,7 +23,7 @@ A simple Raider.io bot for discord
 
 * add the bot to your discord server by going to your unique client ID link:
 
-*Invite Link https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot*
+https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot
 
 
 * run the app:
