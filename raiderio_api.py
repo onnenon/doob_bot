@@ -1,15 +1,4 @@
-import html
-import json
-import requests
-
-API_URL_BASE = "https://raider.io/api/v1/"
-HEADERS = {'Content-Type': 'application/json'}
-
-
-def get_character(name: str, realm="Shattered Hand", region="US"):
-    """
-    Return Character Info from Raider.io
-
+"""
     Return Data Structure
     {
         'name': 'Doobleykah',
@@ -26,16 +15,30 @@ def get_character(name: str, realm="Shattered Hand", region="US"):
         'realm': 'Shattered Hand',
         'profile_url': 'https://raider.io/characters/us/shattered-hand/Doobleykah'
     }
+"""
 
-    """
+import html
+import json
+import requests
+
+API_URL_BASE = "https://raider.io/api/v1/"
+HEADERS = {'Content-Type': 'application/json'}
+
+
+def get_character(name: str, realm: str=None, region: str="US", fields: list=None):
+    """ Return Character Info from Raider.io """
     realm = html.escape(realm)
+    field_str = ""
+    if len(fields) > 0:
+        field_str += "&fields="
+        for field in fields:
+            field_str += "{}%2C%20".format(field)
 
-    api_url = "{}characters/profile?region={}&realm={}&name={}".format(
-        API_URL_BASE, region, realm, name)
+    api_url = "{}characters/profile?region={}&realm={}&name={}{}".format(
+        API_URL_BASE, region, realm, name, field_str)
 
     response = requests.get(api_url, headers=HEADERS)
 
     if response.status_code == 200:
         return json.loads(response.content.decode('utf-8'))
-    else:
-        return None
+    return None
