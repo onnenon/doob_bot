@@ -10,8 +10,12 @@ API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
 
 
-def get_character(name: str, realm: str=None, region: str="US", fields: list=[]):
+def get_character(name: str, realm: str, prefix, region: str="US"):
     """ Return Character Info from Raider.io """
+    fields = []
+
+    if prefix == '#ioscore':
+        fields.append('mythic_plus_scores')
 
     field_str = ""
     if len(fields) > 0:
@@ -25,6 +29,5 @@ def get_character(name: str, realm: str=None, region: str="US", fields: list=[])
     response = requests.get(api_url, headers=HEADERS)
 
     if response.status_code == 200:
-        print(json.loads(response.content.decode('utf-8')))
         return json.loads(response.content.decode('utf-8'))
     return None

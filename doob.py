@@ -14,7 +14,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 
 from raiderio_api import get_character
-from utils import emify_info, pretty_string
+from utils import emify_info
 from char_api import char_api_request
 
 from secrets import BOT_TOKEN
@@ -26,7 +26,7 @@ MYTHIC_PLUS_PREFIX = []
 bot = commands.Bot(command_prefix="#")
 
 embed = discord.Embed(title="Doob Bot", colour=discord.Colour(0x52472b), url="https://discordapp.com",
-                      description="A shitty Discord bot for getting Raider.io Data", timestamp=datetime.datetime.utcfromtimestamp(time.time()))
+                      description="A shitty Discord bot for getting Raider.io Data\n", timestamp=datetime.datetime.utcfromtimestamp(time.time()))
 
 
 @bot.event
