@@ -27,10 +27,10 @@ def get_character(name: str, realm: str, prefix, region: str="US"):
     if len(fields) > 0:
         field_str += "&fields="
         for field in fields:
-            field_str += "{}%2C%20".format(field)
+            field_str += "{}%2C".format(field)
 
     if field_str.endswith("0"):
-        field_str = field_str[:-6]
+        field_str = field_str[:-3]
 
     api_url = "{}characters/profile?region={}&realm={}&name={}{}".format(
         API_URL_BASE, region, realm, name, field_str)
