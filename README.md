@@ -35,9 +35,9 @@ Replace any spaces in realm names with an underscore
 
 *All commands require a character name and realm name. If no region is given the Bot will default to US*
 
-|Command                                          |Description                                                 |
-|-------------------------------------------------|------------------------------------------------------------|
-|#info <character> <realm_name> <region>          | Basic info about character.                                | 
-|#ioscore <character> <realm_name> <region>       | The Raider.io score of a character.                        |
-|#highest <character> <realm_name> <region>       | Three highest mythic dungeons completed by character.      |
-|#best <character> <realm_name> <region>          | Three best scoring mythic dungeons completed by character. |
+|Command                                            |Description                                                 |
+|---------------------------------------------------|------------------------------------------------------------|
+|`#info <character> <realm_name> <region>`          | Basic info about character.                                | 
+|`#ioscore <character> <realm_name> <region>`       | The Raider.io score of a character.                        |
+|`#highest <character> <realm_name> <region>`       | Three highest mythic dungeons completed by character.      |
+|`#best <character> <realm_name> <region>`          | Three best scoring mythic dungeons completed by character. |
