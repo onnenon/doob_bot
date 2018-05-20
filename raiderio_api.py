@@ -16,11 +16,11 @@ def get_character(name: str, realm: str, prefix, region: str="US"):
 
     if prefix == '#info':
         fields.extend(('gear', 'guild'))
-    if prefix == '#ioscore':
+    elif prefix == '#ioscore':
         fields.append('mythic_plus_scores')
-    if prefix == '#best':
+    elif prefix == '#best':
         fields.append('mythic_plus_best_runs')
-    if prefix == '#highest':
+    elif prefix == '#highest':
         fields.append('mythic_plus_highest_level_runs')
 
     field_str = ""
