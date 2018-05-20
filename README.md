@@ -33,6 +33,11 @@ https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot
 ### Bot Commands
 *replace all spaces in realm names with underscore*
 
-`#info <char name> <realm_name> <region>`
+*All commands require a character name and realm name. If no region is given the Bot will default to US*
 
-*if no region is provided US will be used*
+|Command         |Description                                                 |
+|:--------------:|------------------------------------------------------------|
+|#info           | Basic info about character.                                | 
+|#ioscore        | The Raider.io score of a character.                        |
+|#highest        | Three highest mythic dungeons completed by character.      |
+|#best           | Three best scoring mythic dungeons completed by character. |
