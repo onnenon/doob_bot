@@ -35,9 +35,9 @@ https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot
 
 *All commands require a character name and realm name. If no region is given the Bot will default to US*
 
-|Command         |Description                                                 |
-|:--------------:|------------------------------------------------------------|
-|#info           | Basic info about character.                                | 
-|#ioscore        | The Raider.io score of a character.                        |
-|#highest        | Three highest mythic dungeons completed by character.      |
-|#best           | Three best scoring mythic dungeons completed by character. |
+|Command                                     |Description                                                 |
+|:------------------------------------------:|------------------------------------------------------------|
+|#info <character> <realm_name> <region>     | Basic info about character.                                | 
+|#ioscore <character> <realm_name> <region>  | The Raider.io score of a character.                        |
+|#highest <character> <realm_name> <region>  | Three highest mythic dungeons completed by character.      |
+|#best <character> <realm_name> <region>     | Three best scoring mythic dungeons completed by character. |
