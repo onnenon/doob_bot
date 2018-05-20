@@ -20,7 +20,7 @@ from char_api import char_api_request
 from secrets import BOT_TOKEN
 
 
-CHAR_PREFIX = ['#info', '#ioscore']
+CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
 MYTHIC_PLUS_PREFIX = []
 
 bot = commands.Bot(command_prefix="#")
