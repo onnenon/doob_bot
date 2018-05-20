@@ -11,19 +11,20 @@ def emify_info(em, wanted_items: list, **data):
             if type(v) is dict:
                 v_string = ''
                 for key, value in v.items():
-                    v_string += "**{}**: {}\n".format(
-                        key.capitalize(), value)
+                    v_string += "{}: {}\n".format(
+                        key.capitalize().replace("_", " "), value)
                 em.add_field(name="{}".format(k.capitalize().replace(
                     "_", " ")), value=v_string, inline=True)
 
-            if type(v) is list:
+            elif type(v) is list:
                 for item in v:
                     value_str = ""
                     for k, v in item.items():
                         if k in wanted_items:
                             value_str += "{}: {}\n".format(
                                 k.capitalize().replace("_", " "), v)
-                    em.add_field(name="Dungeon", value=value_str, inline=False)
+                    em.add_field(name="++++++++++++++++++++++++",
+                                 value=value_str, inline=False)
 
             else:
                 em.add_field(name="{}:".format(k.capitalize().replace(

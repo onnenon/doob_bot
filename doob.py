@@ -27,6 +27,8 @@ bot = commands.Bot(command_prefix="#")
 
 embed = discord.Embed(title="Doob Bot", colour=discord.Colour(0x52472b), url="https://discordapp.com",
                       description="A shitty Discord bot for getting Raider.io Data\n", timestamp=datetime.datetime.utcfromtimestamp(time.time()))
+embed.set_footer(
+    text="--------------------------------------------------------------------------------------------------------------------")
 
 
 @bot.event
@@ -50,7 +52,7 @@ async def on_message(message):
                 em = char_api_request(arg_fix, prefix, copy.copy(embed))
                 return await bot.send_message(message.channel, embed=em)
             except:
-                return await bot.send_message(message.channel, "Error!")
+                return await bot.send_message(message.channel, "No data was returned from Raider.io, check your spelling!!")
 
         if prefix in MYTHIC_PLUS_PREFIX:
             pass

@@ -8,10 +8,10 @@ from utils import emify_info
 from raiderio_api import get_character
 
 INFO_DATA = ['name', 'class', 'active_spec_name', 'region',
-             'realm', 'faction', 'profile_url', 'thumbnail_url']
-IOSCORE_DATA = ['name', 'class', 'active_spec_name',
+             'realm', 'faction', 'gear', 'guild', 'profile_url', 'thumbnail_url']
+IOSCORE_DATA = ['name', 'realm', 'class', 'active_spec_name',
                 'mythic_plus_scores', 'thumbnail_url', 'all', 'dps', 'healer', 'tank']
-BEST_DATA = ['name', 'class', 'active_spec_name', 'mythic_plus_best_runs', 'mythic_plus_highest_level_runs', 'dungeon',
+BEST_DATA = ['name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs', 'mythic_plus_highest_level_runs', 'dungeon',
              'mythic_level', 'num_keystone_upgrades', 'score', 'thumbnail_url']
 
 
