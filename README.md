@@ -31,7 +31,7 @@ https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot
 
 
 ## Bot Commands
-*replace all spaces in realm names with underscore*
+Replace any spaces in realm names with an underscore
 
 *All commands require a character name and realm name. If no region is given the Bot will default to US*
 
