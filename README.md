@@ -30,7 +30,7 @@ https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot
 `python3 doob.py`
 
 
-### Bot Commands
+## Bot Commands
 *replace all spaces in realm names with underscore*
 
 *All commands require a character name and realm name. If no region is given the Bot will default to US*
