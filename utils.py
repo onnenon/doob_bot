@@ -23,7 +23,7 @@ def emify_info(em, wanted_items: list, **data):
                         if k in wanted_items:
                             value_str += "{}: {}\n".format(
                                 k.capitalize().replace("_", " "), v)
-                    em.add_field(name="++++++++++++++++++++++++",
+                    em.add_field(name=("+" * 25),
                                  value=value_str, inline=False)
 
             else:
