@@ -18,7 +18,7 @@ A simple Raider.io bot for discord
 
 
 * create a secrets file and write your bot token to it:
-`echo "BOT_TOKEN='<your_secret_token>" > secrets.py`
+`echo "BOT_TOKEN='<your_secret_token>'" > secrets.py`
 
 
 * add the bot to your discord server by going to your unique client ID link:
