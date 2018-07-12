@@ -1,5 +1,4 @@
 # Doob the Discord Bot by onnenon
-
 """
  Invite Link https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot
 """
@@ -17,16 +16,18 @@ from raiderio_api import char_api_request
 
 from secrets import BOT_TOKEN
 
-
 CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
 MYTHIC_PLUS_PREFIX = []
 
 bot = commands.Bot(command_prefix="#")
 
-embed = discord.Embed(title="Doob Bot", colour=discord.Colour(0x52472b), url="https://discordapp.com",
-                      description="A shitty Discord bot for getting Raider.io Data\n", timestamp=datetime.datetime.utcfromtimestamp(time.time()))
-embed.set_footer(
-    text=("-" * 115))
+embed = discord.Embed(
+    title="Doob Bot",
+    colour=discord.Colour(0x52472b),
+    url="https://discordapp.com",
+    description="A shitty Discord bot for getting Raider.io Data\n",
+    timestamp=datetime.datetime.utcfromtimestamp(time.time()))
+embed.set_footer(text=("-" * 115))
 
 
 @bot.event
@@ -48,10 +49,15 @@ async def on_message(message):
         if prefix in CHAR_PREFIX:
             try:
                 em = char_api_request(arg_fix, prefix, copy.copy(embed))
-                em.set(timestamp=datetime.datetime.utcfromtimestamp(time.time())
-                return await bot.send_message(message.channel, embed=em)
+                return await bot.send_message(
+                    message.channel,
+                    embed=em.timestamp(
+                        datetime.datetime.utcfromtimestamp(time.time())))
             except:
-                return await bot.send_message(message.channel, "No data was returned from Raider.io, check your spelling!!")
+                return await bot.send_message(
+                    message.channel,
+                    "No data was returned from Raider.io, check your spelling!!"
+                )
 
         if prefix in MYTHIC_PLUS_PREFIX:
             pass
