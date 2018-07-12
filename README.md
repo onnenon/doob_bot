@@ -14,7 +14,7 @@ A simple Raider.io bot for discord
 
 
 * install requirements:
-`python3 -m pip install -r requirements.pip`
+`python3 -m pip install -r requirements.txt`
 
 
 * create a secrets file and write your bot token to it:
