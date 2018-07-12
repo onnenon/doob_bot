@@ -48,6 +48,7 @@ async def on_message(message):
         if prefix in CHAR_PREFIX:
             try:
                 em = char_api_request(arg_fix, prefix, copy.copy(embed))
+                em.set(timestamp=datetime.datetime.utcfromtimestamp(time.time())
                 return await bot.send_message(message.channel, embed=em)
             except:
                 return await bot.send_message(message.channel, "No data was returned from Raider.io, check your spelling!!")
