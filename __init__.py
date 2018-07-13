@@ -21,14 +21,6 @@ MYTHIC_PLUS_PREFIX = []
 
 bot = commands.Bot(command_prefix="#")
 
-embed = discord.Embed(
-    title="Doob Bot",
-    colour=discord.Colour(0x52472b),
-    url="https://discordapp.com",
-    description="A shitty Discord bot for getting Raider.io Data\n",
-    timestamp=datetime.datetime.utcfromtimestamp(time.time()))
-embed.set_footer(text=("-" * 115))
-
 
 @bot.event
 async def on_ready():
@@ -47,12 +39,16 @@ async def on_message(message):
         arg_fix = [arg.replace("_", "-") for arg in args]
 
         if prefix in CHAR_PREFIX:
+            embed = discord.Embed(
+                title="Doob Bot",
+                colour=discord.Colour(0x52472b),
+                url="https://discordapp.com",
+                description="A simple Discord bot for getting Raider.io Data\n",
+                timestamp=datetime.datetime.utcfromtimestamp(time.time()))
+            embed.set_footer(text=("-" * 115))
             try:
                 em = char_api_request(arg_fix, prefix, copy.copy(embed))
-                return await bot.send_message(
-                    message.channel,
-                    embed=em.timestamp(
-                        datetime.datetime.utcfromtimestamp(time.time())))
+                return await bot.send_message(message.channel, embed=em)
             except:
                 return await bot.send_message(
                     message.channel,
