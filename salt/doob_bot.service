@@ -1,0 +1,9 @@
+[Unit]
+Description=Doob Bot Service
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python3.6 /home/sonnen/projects/doob/__init__.py
+
+[Install]
+WantedBy=multi-user.target
