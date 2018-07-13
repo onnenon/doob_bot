@@ -4,12 +4,10 @@
  Github: https://github.com/onnenon/doob_bot
 
 """
-
+import os
 import asyncio
 import datetime
 import time
-
-from secrets import BOT_TOKEN
 
 import discord
 from discord.ext import commands
@@ -19,6 +17,7 @@ from raiderio_api import char_api_request
 
 CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
 MYTHIC_PLUS_PREFIX = []
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 BOT = commands.Bot(command_prefix="#")
 

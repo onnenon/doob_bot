@@ -1,5 +1,7 @@
 # Doob Bot
 
+[![Build Status](https://travis-ci.org/onnenon/doob_bot.svg?branch=master)](https://travis-ci.org/onnenon/doob_bot)
+
 A simple Raider.io bot for discord
 
 ## To add the bot to a Discord server
