@@ -4,6 +4,17 @@ from discord.ext.commands import Bot
 
 
 def emify_info(em, wanted_items: list, **data):
+    """Takes a given embed object and data, and adds the data to the embed object.
+
+    Args:
+        em: Embed object to add formatted data to.
+        wanted_items: List of 'Keys' that will be pulled from data and added to embed.
+        **data: Dictionary object returned from the Raider.io API call.
+
+    Returns:
+        Embed object with all "wanted" data correctly added to it.
+    
+    """
     em.set_thumbnail(url=data.get('thumbnail_url'))
     for k, v in data.items():
         if not k.startswith('thumb') and k in wanted_items:

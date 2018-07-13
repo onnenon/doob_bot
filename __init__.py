@@ -1,12 +1,15 @@
-# Doob the Discord Bot by onnenon
 """
- Invite Link https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot
+ Doob Bot, A simple discord bot for Raider.io
+
+ Github: https://github.com/onnenon/doob_bot
+
 """
 
 import asyncio
 import datetime
 import time
-import copy
+
+from secrets import BOT_TOKEN
 
 import discord
 from discord.ext import commands
@@ -14,22 +17,24 @@ from discord.ext.commands import Bot
 
 from raiderio_api import char_api_request
 
-from secrets import BOT_TOKEN
-
 CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
 MYTHIC_PLUS_PREFIX = []
 
-bot = commands.Bot(command_prefix="#")
+BOT = commands.Bot(command_prefix="#")
 
 
-@bot.event
+@BOT.event
 async def on_ready():
-    print(f"{bot.user.name} Is Running")
-    print(f"With the ID: {bot.user.id}")
+    """Function that will print to console when bot is running successfully. """
+    print(f"{BOT.user.name} Is Running")
+    print(f"With the ID: {BOT.user.id}")
 
 
-@bot.event
+@BOT.event
 async def on_message(message):
+    """Function that scans messages in text channels of a server and calls the
+    Raider.io API when a defined prefix is used.
+    """
     # Split the message into a list
     args = message.content.split(" ")
 
@@ -47,16 +52,18 @@ async def on_message(message):
                 timestamp=datetime.datetime.utcfromtimestamp(time.time()))
             embed.set_footer(text=("-" * 115))
             try:
-                em = char_api_request(arg_fix, prefix, copy.copy(embed))
-                return await bot.send_message(message.channel, embed=em)
+                message_embed = char_api_request(arg_fix, prefix, embed)
+                return await BOT.send_message(
+                    message.channel, embed=message_embed)
             except:
-                return await bot.send_message(
+                return await BOT.send_message(
                     message.channel,
                     "No data was returned from Raider.io, check your spelling!!"
                 )
 
         if prefix in MYTHIC_PLUS_PREFIX:
+            # TODO Create commands that get non-character info from API
             pass
 
 
-bot.run(BOT_TOKEN)
+BOT.run(BOT_TOKEN)
