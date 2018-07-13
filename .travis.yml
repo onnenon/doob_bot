@@ -8,5 +8,4 @@ install:
   - pip install -r requirements.txt
 
 # Run Tests
-script:
-  - pylint --output-format=text __init__.py
+  # script:
