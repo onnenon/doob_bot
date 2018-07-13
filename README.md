@@ -16,7 +16,7 @@ A simple Raider.io bot for discord
 
 |Command                                            |Description                                                 |
 |---------------------------------------------------|------------------------------------------------------------|
-|`#info <character> <realm_name> <region>`          | Basic info about character.                                | 
+|`#info <character> <realm_name> <region>`          | Basic info about character.                                |
 |`#ioscore <character> <realm_name> <region>`       | The Raider.io score of a character.                        |
 |`#highest <character> <realm_name> <region>`       | Three highest mythic dungeons completed by character.      |
 |`#best <character> <realm_name> <region>`          | Three best scoring mythic dungeons completed by character. |
@@ -32,6 +32,8 @@ A simple Raider.io bot for discord
 ![info command](media/info_screen.png)
 
 ## To set up your own version of the bot
+
+* clone the project: `git clone https://github.com/onnenon/doob_bot.git`
 
 * cd into the project directory and create a virtual environment: `python3 -m venv env`
 
