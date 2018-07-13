@@ -15,15 +15,22 @@ from utils import emify_info
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
 
-INFO_DATA = ['name', 'class', 'active_spec_name', 'region',
-             'realm', 'faction', 'gear', 'guild', 'profile_url', 'thumbnail_url']
-IOSCORE_DATA = ['name', 'realm', 'class', 'active_spec_name',
-                'mythic_plus_scores', 'thumbnail_url', 'all', 'dps', 'healer', 'tank']
-BEST_DATA = ['name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs', 'mythic_plus_highest_level_runs', 'dungeon',
-             'mythic_level', 'num_keystone_upgrades', 'score', 'thumbnail_url']
+INFO_DATA = [
+    'name', 'class', 'active_spec_name', 'region', 'realm', 'faction', 'gear',
+    'guild', 'profile_url', 'thumbnail_url'
+]
+IOSCORE_DATA = [
+    'name', 'realm', 'class', 'active_spec_name', 'mythic_plus_scores',
+    'thumbnail_url', 'all', 'dps', 'healer', 'tank'
+]
+BEST_DATA = [
+    'name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs',
+    'mythic_plus_highest_level_runs', 'dungeon', 'mythic_level',
+    'num_keystone_upgrades', 'score', 'thumbnail_url'
+]
 
 
-def get_character_info(name: str, realm: str, prefix, region: str="US"):
+def get_character_info(name: str, realm: str, prefix, region: str = "US"):
     """ Return Character Info from Raider.io """
     fields = []
 
@@ -40,15 +47,12 @@ def get_character_info(name: str, realm: str, prefix, region: str="US"):
     if len(fields) > 0:
         field_str += "&fields="
         for field in fields:
-            field_str += "{}%2C".format(field)
+            field_str += f"{field}%2C"
 
     if field_str.endswith("0"):
         field_str = field_str[:-3]
 
-    api_url = "{}characters/profile?region={}&realm={}&name={}{}".format(
-        API_URL_BASE, region, realm, name, field_str)
-
-    # print(api_url)
+    api_url = f"{API_URL_BASE}characters/profile?region={region}&realm={realm}&name={name}{field_str}"
 
     response = requests.get(api_url, headers=HEADERS)
 
@@ -65,7 +69,7 @@ def char_api_request(li: list, prefix: str, em):
     elif len(li) == 3:
         user_info = get_character_info(li[0], li[1], prefix, li[2])
 
-    if(user_info is not None):
+    if (user_info is not None):
         # Gets character Info
         if prefix == '#info':
             return emify_info(em, INFO_DATA, **user_info)

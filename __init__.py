@@ -32,8 +32,8 @@ embed.set_footer(text=("-" * 115))
 
 @bot.event
 async def on_ready():
-    print("{} Is Running".format(bot.user.name))
-    print("With the ID: {}".format(bot.user.id))
+    print(f"{bot.user.name} Is Running")
+    print(f"With the ID: {bot.user.id}")
 
 
 @bot.event
