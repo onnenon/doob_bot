@@ -39,12 +39,16 @@ A simple Raider.io bot for discord
 
 * cd into the project directory and create a virtual environment: `python3 -m venv env`
 
-* activate the virtual environment: `source env/bin/activate`
+* copy the env_example environment file: `cp env_example.env .env`
 
-* install requirements: `python3 -m pip install -r requirements.txt`
+* edit your .env file to have your unique bot token. (*get a bot token by following this [wiki](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token)*)
 
-* create a secrets file and write your bot token to it: `echo "BOT_TOKEN='<your_secret_token>'" > secrets.py` (*get a bot token by following this [wiki](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token)*)
+* source your .env file to activate your virtual environment, install requirements, and set your BOT_TOKEN as an environment variable: `source .env`
 
 * add the bot to your discord server by going to your unique client ID link: `https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot`
 
-* run the app: `python3 doob.py` *(as long as the process remains running the bot will be online)*
+* run the app: `python3 __init__.py` *(as long as the process remains running the bot will be online)*
+
+## SaltStack Deployment Config
+
+If you are somewhat familiar with SaltStack, feel free to look at my state files in the /salt directory as an example. They are set up to deploy the bot as a service to a machine running Centos 7.

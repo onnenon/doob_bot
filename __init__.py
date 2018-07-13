@@ -4,6 +4,7 @@
  Github: https://github.com/onnenon/doob_bot
 
 """
+
 import os
 import asyncio
 import datetime
@@ -24,14 +25,14 @@ BOT = commands.Bot(command_prefix="#")
 
 @BOT.event
 async def on_ready():
-    """Function that will print to console when bot is running successfully. """
+    """Prints to console when bot is running successfully. """
     print(f"{BOT.user.name} Is Running")
     print(f"With the ID: {BOT.user.id}")
 
 
 @BOT.event
 async def on_message(message):
-    """Function that scans messages in text channels of a server and calls the
+    """Scans messages in text channels of a server and calls the
     Raider.io API when a defined prefix is used.
     """
     # Split the message into a list
@@ -65,4 +66,5 @@ async def on_message(message):
             pass
 
 
+print(BOT_TOKEN)
 BOT.run(BOT_TOKEN)
