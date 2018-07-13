@@ -40,3 +40,13 @@ Replace any spaces in realm names with an underscore
 |`#ioscore <character> <realm_name> <region>`       | The Raider.io score of a character.                        |
 |`#highest <character> <realm_name> <region>`       | Three highest mythic dungeons completed by character.      |
 |`#best <character> <realm_name> <region>`          | Three best scoring mythic dungeons completed by character. |
+
+## Screenshots
+
+#### #ioscore command
+
+![ioscore screenshot](media/ioscore_screen.png)
+
+#### #info command
+
+![info command](media/info_screen.png)
