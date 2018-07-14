@@ -16,9 +16,11 @@ from discord.ext.commands import Bot
 
 from raiderio_api import char_api_request
 
+from secrets import BOT_TOKEN
+
 CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
 MYTHIC_PLUS_PREFIX = []
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+# BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 BOT = commands.Bot(command_prefix="#")
 
@@ -66,5 +68,4 @@ async def on_message(message):
             pass
 
 
-print(BOT_TOKEN)
 BOT.run(BOT_TOKEN)
