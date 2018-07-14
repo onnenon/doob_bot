@@ -3,6 +3,7 @@ Description=Doob Bot Service
 After=multi-user.target
 
 [Service]
+User=sonnen
 ExecStart=/usr/bin/python3.6 /home/sonnen/projects/doob/__init__.py
 
 [Install]
