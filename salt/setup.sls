@@ -20,10 +20,9 @@ get_repo:
     - force_reset: True
 
 set_bot_token_env_variable:
-  environ.setenv:
-    - name: BOT_TOKEN
-    - value: {{ pillar['bot_token'] }}
-    - update_minion: True
+  file.append:
+    - name: /etc/systemd/system.conf
+    - text: DefaultEnvironment="BOT_TOKEN={{ pillar['bot_token'] }}"
 
 install_requirements:
   cmd.run:
