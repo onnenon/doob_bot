@@ -1,8 +1,3 @@
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot
-
-
 def emify_info(em, wanted_items: list, **data):
     """Takes a given embed object and data, and adds the data to the embed object.
 
