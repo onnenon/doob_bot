@@ -1,3 +1,8 @@
+"""
+Utility functions for doob_bot.
+"""
+
+
 def emify_info(em, wanted_items: list, **data):
     """Takes a given embed object and data, and adds the data to the embed object.
 
