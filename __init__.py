@@ -12,7 +12,7 @@ import time
 import discord
 from discord.ext import commands
 
-from raiderio_api import char_api_request
+from doob_bot.raiderio_api import char_api_request
 
 CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
 MYTHIC_PLUS_PREFIX = []

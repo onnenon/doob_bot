@@ -2,9 +2,5 @@ import unittest
 
 
 class FirstTests(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual('Name', 'Name')
-
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_001_get_character_info(self):
+        pass

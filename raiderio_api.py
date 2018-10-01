@@ -4,7 +4,7 @@ Raider.io API info at https://raider.io/api#!/
 import json
 import requests
 
-from utils import emify_info
+from doob_bot.utils import emify_info
 
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
