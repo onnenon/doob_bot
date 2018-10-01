@@ -3,4 +3,4 @@ run:
 
 test:
 	pip install -r requirements.txt
-	python -m unittest discover
+	sh run-tests.sh

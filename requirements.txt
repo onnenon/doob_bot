@@ -2,3 +2,7 @@ discord
 requests
 spylogger[pretty]
 mock
+nose
+rednose
+pytest
+coverage
