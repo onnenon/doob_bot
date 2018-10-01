@@ -1,15 +1,9 @@
 """
 Raider.io API info at https://raider.io/api#!/
 """
-
-import html
 import json
 import requests
-import utils
 
-import discord
-from discord.ext import commands
-from discord.ext.commands import Bot
 from utils import emify_info
 
 API_URL_BASE = "https://raider.io/api/v1/"
@@ -32,7 +26,7 @@ BEST_DATA = [
 
 def get_character_info(name: str, realm: str, prefix, region: str = "US"):
     """Returns Character Info from Raider.io 
-    
+
     Args:
         name: Name of character.
         realm: Realm of character.
@@ -43,7 +37,6 @@ def get_character_info(name: str, realm: str, prefix, region: str = "US"):
         A dictionary containing all of the info from the API call
 
         If the API call does not return data it returns 'None'
-
     """
     fields = []
 
@@ -77,7 +70,7 @@ def get_character_info(name: str, realm: str, prefix, region: str = "US"):
 
 def char_api_request(li: list, prefix: str, em):
     """Gets correct info from Raider.io API and returns correctly formatted Discord embed object.
-    
+
     Args:
         li: The list of attributes that will be added to the embed object.
         prefix: Prefix the user passed to the bot in the message.
@@ -87,7 +80,6 @@ def char_api_request(li: list, prefix: str, em):
         The embed object with all the fetched data correctly added.
 
         If the API call returns no data, it will instead return 'None'.
-
     """
     if len(li) == 2:
         user_info = get_character_info(li[0], li[1], prefix)
