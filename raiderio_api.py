@@ -25,13 +25,13 @@ BEST_DATA = [
 
 
 def get_character_info(name: str, realm: str, prefix, region: str = "US"):
-    """Returns Character Info from Raider.io 
+    """Returns Character Info from Raider.io
 
     Args:
-        name: Name of character.
-        realm: Realm of character.
-        prefix: Prefix or 'command' the user passed.
-        region: Region of character, defaults to US.
+        Name: Name of character.
+        Realm: Realm of character.
+        Prefix: Prefix or 'command' the user passed.
+        Region: Region of character, defaults to US.
 
     Returns:
         A dictionary containing all of the info from the API call
