@@ -6,15 +6,13 @@
 """
 
 import os
-import asyncio
 import datetime
 import time
 
 import discord
 from discord.ext import commands
-from discord.ext.commands import Bot
 
-from raiderio_api import char_api_request
+from doob_bot.raiderio_api import char_api_request
 
 CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
 MYTHIC_PLUS_PREFIX = []
@@ -55,7 +53,7 @@ async def on_message(message):
                 message_embed = char_api_request(arg_fix, prefix, embed)
                 return await BOT.send_message(
                     message.channel, embed=message_embed)
-            except:
+            except Exception as e:
                 return await BOT.send_message(
                     message.channel,
                     "No data was returned from Raider.io, check your spelling!!"

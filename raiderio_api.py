@@ -4,7 +4,7 @@ Raider.io API info at https://raider.io/api#!/
 import json
 import requests
 
-from utils import emify_info
+from doob_bot.utils import emify_info
 
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
@@ -88,14 +88,15 @@ def char_api_request(li: list, prefix: str, em):
         user_info = get_character_info(li[0], li[1], prefix, li[2])
 
     if (user_info is not None):
-        # Gets character Info
+        # Gets a character's Info
         if prefix == '#info':
             return emify_info(em, INFO_DATA, **user_info)
 
-        # Gets character IO Score
+        # Gets a character's IO Score
         if prefix == '#ioscore':
             return emify_info(em, IOSCORE_DATA, **user_info)
 
+        # Gets a character's "best" or "highest" Mythic+ runs
         if prefix == '#best' or prefix == '#highest':
             return emify_info(em, BEST_DATA, **user_info)
 
