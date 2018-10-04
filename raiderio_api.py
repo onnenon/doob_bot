@@ -4,7 +4,7 @@ Raider.io API info at https://raider.io/api#!/
 import json
 import requests
 
-from utils import emify_info
+from doob_bot.utils import emify_info
 
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
@@ -25,13 +25,13 @@ BEST_DATA = [
 
 
 def get_character_info(name: str, realm: str, prefix, region: str = "US"):
-    """Returns Character Info from Raider.io 
+    """Returns Character Info from Raider.io
 
     Args:
-        name: Name of character.
-        realm: Realm of character.
-        prefix: Prefix or 'command' the user passed.
-        region: Region of character, defaults to US.
+        Name: Name of character.
+        Realm: Realm of character.
+        Prefix: Prefix or 'command' the user passed.
+        Region: Region of character, defaults to US.
 
     Returns:
         A dictionary containing all of the info from the API call
