@@ -67,4 +67,5 @@ async def on_message(message):
             pass
 
 
-BOT.run(BOT_TOKEN)
+if __name__ == "__main__":
+    BOT.run(BOT_TOKEN)
