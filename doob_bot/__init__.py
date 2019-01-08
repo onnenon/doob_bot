@@ -1,6 +1,8 @@
 """
  Doob Bot, A simple discord bot for Raider.io
 
+ Author: Stephen Onnen
+
  Github: https://github.com/onnenon/doob_bot
 
 """
