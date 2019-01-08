@@ -50,10 +50,9 @@ async def on_message(message):
             embed.set_footer(text=("-" * 115))
             try:
                 message_embed = char_api_request(arg_fix, prefix, embed)
-                await message.channel.send(message.channel, embed=message_embed)
+                await message.channel.send(embed=message_embed)
             except:
-                await message.channel.send(message.channel,
-                                           "No data was returned from Raider.io, check your spelling!!")
+                await message.channel.send("No data was returned from Raider.io, check your spelling!!")
 
         if prefix in MYTHIC_PLUS_PREFIX:
             # TODO Create commands that get non-character info from API
