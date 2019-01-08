@@ -7,7 +7,6 @@
 
 import os
 import datetime
-import time
 
 import discord
 from discord.ext import commands
@@ -30,8 +29,14 @@ async def on_ready():
 
 @BOT.event
 async def on_message(message):
-    """Scans messages in text channels of a server and calls the
-    Raider.io API when a defined prefix is used.
+    """Scans messages in text channels of a server and calls the Raider.io API when a defined prefix is used.
+
+    Args:
+        message: Message object recieved by discord bot.
+
+    Returns:
+        Sends a message to the channel of the message arg with an embed object if data was returned, or an error message
+        if no data was recieved from Raider.io's API
     """
     # Split the message into a list
     args = message.content.split(" ")
@@ -47,17 +52,13 @@ async def on_message(message):
                 colour=discord.Colour(0x52472b),
                 url="https://discordapp.com",
                 description="A simple Discord bot for getting Raider.io Data\n",
-                timestamp=datetime.datetime.utcfromtimestamp(time.time()))
+                timestamp=datetime.datetime.utcnow())
             embed.set_footer(text=("-" * 115))
             try:
                 message_embed = char_api_request(arg_fix, prefix, embed)
-                return await BOT.send_message(
-                    message.channel, embed=message_embed)
-            except Exception as e:
-                return await BOT.send_message(
-                    message.channel,
-                    "No data was returned from Raider.io, check your spelling!!"
-                )
+                await message.channel.send(embed=message_embed)
+            except:
+                await message.channel.send("No data was returned from Raider.io, check your spelling!!")
 
         if prefix in MYTHIC_PLUS_PREFIX:
             # TODO Create commands that get non-character info from API

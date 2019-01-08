@@ -1,5 +1,5 @@
 run:
-	python3 __init__.py
+	python3 -m doob_bot
 
 test:
 	pip install -r requirements.txt

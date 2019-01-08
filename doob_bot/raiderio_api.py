@@ -1,6 +1,9 @@
 """
+
 Raider.io API info at https://raider.io/api#!/
+
 """
+
 import json
 import requests
 
@@ -10,17 +13,14 @@ API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
 
 INFO_DATA = [
-    'name', 'class', 'active_spec_name', 'region', 'realm', 'faction', 'gear',
-    'guild', 'profile_url', 'thumbnail_url'
+    'name', 'class', 'active_spec_name', 'region', 'realm', 'faction', 'gear', 'guild', 'profile_url', 'thumbnail_url'
 ]
 IOSCORE_DATA = [
-    'name', 'realm', 'class', 'active_spec_name', 'mythic_plus_scores',
-    'thumbnail_url', 'all', 'dps', 'healer', 'tank'
+    'name', 'realm', 'class', 'active_spec_name', 'mythic_plus_scores', 'thumbnail_url', 'all', 'dps', 'healer', 'tank'
 ]
 BEST_DATA = [
-    'name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs',
-    'mythic_plus_highest_level_runs', 'dungeon', 'mythic_level',
-    'num_keystone_upgrades', 'score', 'thumbnail_url'
+    'name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs', 'mythic_plus_highest_level_runs', 'dungeon',
+    'mythic_level', 'num_keystone_upgrades', 'score', 'thumbnail_url'
 ]
 
 
