@@ -29,8 +29,14 @@ async def on_ready():
 
 @BOT.event
 async def on_message(message):
-    """Scans messages in text channels of a server and calls the
-    Raider.io API when a defined prefix is used.
+    """Scans messages in text channels of a server and calls the Raider.io API when a defined prefix is used.
+
+    Args:
+        message: Message object recieved by discord bot.
+
+    Returns:
+        Sends a message to the channel of the message arg with an embed object if data was returned, or an error message
+        if no data was recieved from Raider.io's API
     """
     # Split the message into a list
     args = message.content.split(" ")
