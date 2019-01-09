@@ -3,40 +3,58 @@
 Raider.io API info at https://raider.io/api#!/
 
 """
-
+import datetime
 import json
 import requests
 
-from spylogger import get_logger
+import discord
 
 from doob_bot.exceptions import BadStatusCode
+from doob_bot.settings import CHAR_PREFIX, DATA_LISTS, FIELD_DATA, LOGGER, MYTHIC_PLUS_PREFIX
 from doob_bot.utils import add_data_to_embed
-
-LOGGER = get_logger(log_level="DEBUG")
 
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
 
-DATA_LISTS = {
-    "#info": [
-        'name', 'class', 'active_spec_name', 'region', 'realm', 'faction',
-        'gear', 'guild', 'profile_url', 'thumbnail_url'
-    ],
-    "#ioscore": [
-        'name', 'realm', 'class', 'active_spec_name', 'mythic_plus_scores',
-        'thumbnail_url', 'all', 'dps', 'healer', 'tank'
-    ],
-    "#best": [
-        'name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs',
-        'mythic_plus_highest_level_runs', 'dungeon', 'mythic_level',
-        'num_keystone_upgrades', 'score', 'thumbnail_url'
-    ],
-    "#highest": [
-        'name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs',
-        'mythic_plus_highest_level_runs', 'dungeon', 'mythic_level',
-        'num_keystone_upgrades', 'score', 'thumbnail_url'
-    ]
-}
+
+def handle_message(message):
+    """Scans messages in text channels of a server and calls the Raider.io API
+       when a defined prefix is used.
+
+    Args:
+        message: Message object recieved by discord bot.
+
+    Returns:
+        Sends a message to the channel of the message arg with an embed object
+        if data was returned, or an error message and exeption was thrown while
+        attempting to call Raider.io's API
+    """
+
+    args = message.content.split(" ")
+
+    # If first index of that list is in the defined prefixes prep the message
+    if args[0] in CHAR_PREFIX or args[0] in MYTHIC_PLUS_PREFIX:
+        prefix = args.pop(0)
+        arg_fix = [arg.replace("_", "-") for arg in args]
+
+        LOGGER.debug({"prefix": prefix})
+
+        if prefix in CHAR_PREFIX:
+            embed = discord.Embed(
+                title="Doob Bot",
+                colour=discord.Colour(0x52472b),
+                url="http://github.com/onnenon/doob_bot",
+                description="A simple Discord bot for getting Raider.io Data\n",
+                timestamp=datetime.datetime.utcnow())
+            embed.set_footer(text=("-" * 115))
+
+            return char_api_request(arg_fix, prefix, embed)
+
+        elif prefix in MYTHIC_PLUS_PREFIX:
+            # TODO Create commands that get non-characterinfo from API
+            pass
+
+    return None
 
 
 def char_api_request(li: list, prefix: str, em):
@@ -84,16 +102,8 @@ def get_character_info(name: str, realm: str, prefix, region: str = "US"):
     Returns:
         A dictionary containing all of the info from the API call
     """
-    FIELD_DATA = {
-        '#info': ['gear', 'guild'],
-        '#ioscore': ['mythic_plus_scores'],
-        '#best': ['mythic_plus_best_runs'],
-        '#highest': ['mythic_plus_highest_level_runs']
-    }
 
     fields = []
-
-    LOGGER.debug({"prefix": prefix})
 
     if prefix not in FIELD_DATA.keys():
         raise ValueError("Invalid Prefix")

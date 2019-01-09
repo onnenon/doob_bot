@@ -1,7 +1,7 @@
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import ANY, MagicMock, patch
 
-import doob_bot.raiderio_api as db
+import doob_bot.handler as db
 from doob_bot.exceptions import BadStatusCode
 
 
@@ -16,12 +16,12 @@ class CharAPIRequestTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             db.char_api_request([], self.prefix, self.em)
 
-    @patch("doob_bot.raiderio_api.get_character_info")
+    @patch("doob_bot.handler.get_character_info")
     def test_args_002(self, mock):
         db.char_api_request(self.two_args, self.prefix, self.em)
         mock.assert_called_with("name", "realm", "#info")
 
-    @patch("doob_bot.raiderio_api.get_character_info")
+    @patch("doob_bot.handler.get_character_info")
     def test_args_003(self, mock):
         db.char_api_request(self.three_args, self.prefix, self.em)
         mock.assert_called_with("name", "realm", "#info", "Country")
@@ -46,3 +46,22 @@ class GetCharInfoTests(unittest.TestCase):
     def test_bad_prefix_001(self, mock):
         with self.assertRaises(ValueError):
             db.get_character_info("name", "realm", "#random", "Region")
+
+
+class HandleMessageTests(unittest.TestCase):
+    def setUp(self):
+        self.char_pref = MagicMock(content="#info name realm_name")
+        self.mythic_pref = MagicMock(content="#foo bar baz")
+        self.invalid_pref = MagicMock(content="#random foo bar")
+
+    def test_invalid_pref_001(self):
+        self.assertEqual(None, db.handle_message(self.invalid_pref))
+
+    @patch("doob_bot.handler.char_api_request")
+    @patch("discord.Embed", return_value=MagicMock())
+    def test_char_pref_001(self, mock, api):
+        db.handle_message(self.char_pref)
+        api.assert_called_with(["name", "realm-name"], "#info", ANY)
+
+    def test_mythic_pref_001(self):
+        db.handle_message(self.mythic_pref)
