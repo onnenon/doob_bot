@@ -12,14 +12,18 @@ import datetime
 
 import discord
 from discord.ext import commands
+from spylogger import get_logger
 
 from doob_bot.raiderio_api import char_api_request
 
-CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
-MYTHIC_PLUS_PREFIX = []
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 BOT = commands.Bot(command_prefix="#")
+
+LOGGER = get_logger(log_level="DEBUG")
+
+CHAR_PREFIX = ['#info', '#ioscore', '#best', '#highest']
+MYTHIC_PLUS_PREFIX = []
 
 
 @BOT.event
@@ -59,11 +63,15 @@ async def on_message(message):
             try:
                 message_embed = char_api_request(arg_fix, prefix, embed)
                 await message.channel.send(embed=message_embed)
-            except:
+            except ValueError as e:
+                LOGGER.debug({"Exception:": str(e)})
+                await message.channel.send("Invalid number of arguments!")
+            except Exception as e:
+                LOGGER.debug({"Exception:": str(e)})
                 await message.channel.send("No data was returned from Raider.io, check your spelling!!")
 
         if prefix in MYTHIC_PLUS_PREFIX:
-            # TODO Create commands that get non-character info from API
+            # TODO Create commands that get non-characterinfo from API
             pass
 
 
