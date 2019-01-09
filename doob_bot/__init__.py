@@ -42,7 +42,7 @@ async def on_message(message):
 
     Returns:
         Sends a message to the channel of the message arg with an embed object if data was returned, or an error message
-        if no data was recieved from Raider.io's API
+        and exeption was thrown while attempting to call Raider.io's API
     """
     # Split the message into a list
     args = message.content.split(" ")

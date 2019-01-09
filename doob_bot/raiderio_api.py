@@ -37,10 +37,11 @@ def get_character_info(name: str, realm: str, prefix, region: str = "US"):
         Prefix: Prefix or 'command' the user passed.
         Region: Region of character, defaults to US.
 
+    Raises:
+        Exception: If status code from API call is not 200.
+
     Returns:
         A dictionary containing all of the info from the API call
-
-        If the API call does not return data it returns 'None'
     """
     fields = []
 
@@ -83,10 +84,12 @@ def char_api_request(li: list, prefix: str, em):
         prefix: Prefix the user passed to the bot in the message.
         em: The embed object that will have data added to it and then be returned.
 
+    Raises:
+        ValueError: If an invalid number of arguments are passed.
+        Exception: If exception is thrown by get_character_info
+
     Returns:
         The embed object with all the fetched data correctly added.
-
-        If the API call returns no data, it will instead return 'None'.
     """
     try:
         if len(li) not in range(2, 4):
