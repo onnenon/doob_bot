@@ -64,10 +64,10 @@ async def on_message(message):
                 message_embed = char_api_request(arg_fix, prefix, embed)
                 await message.channel.send(embed=message_embed)
             except ValueError as e:
-                LOGGER.debug({"Exception:": str(e)})
+                LOGGER.error({"Exception:": str(e)})
                 await message.channel.send("Invalid number of arguments!")
             except Exception as e:
-                LOGGER.debug({"Exception:": str(e)})
+                LOGGER.error({"Exception:": str(e)})
                 await message.channel.send("No data was returned from Raider.io, check your spelling!!")
 
         if prefix in MYTHIC_PLUS_PREFIX:
