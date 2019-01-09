@@ -7,7 +7,11 @@ Raider.io API info at https://raider.io/api#!/
 import json
 import requests
 
+from spylogger import get_logger
+
 from doob_bot.utils import emify_info
+
+LOGGER = get_logger(log_level="DEBUG")
 
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
@@ -62,10 +66,13 @@ def get_character_info(name: str, realm: str, prefix, region: str = "US"):
 
     response = requests.get(api_url, headers=HEADERS)
 
-    if response.status_code == 200:
-        # print(json.loads(response.content.decode('utf-8')))
-        return json.loads(response.content.decode('utf-8'))
-    return None
+    if response.status_code != 200:
+        raise Exception("Bad response status code: " + response.status_code)
+        LOGGER.debug({"Status Code:": response.status_code})
+
+    r_content = json.loads(response.content.decode('utf-8'))
+    LOGGER.debug({"Response Content": r_content})
+    return r_content
 
 
 def char_api_request(li: list, prefix: str, em):
@@ -81,23 +88,27 @@ def char_api_request(li: list, prefix: str, em):
 
         If the API call returns no data, it will instead return 'None'.
     """
-    if len(li) == 2:
-        user_info = get_character_info(li[0], li[1], prefix)
+    try:
+        if len(li) not in range(2, 4):
+            raise ValueError("Invalid number of arguments")
 
-    elif len(li) == 3:
-        user_info = get_character_info(li[0], li[1], prefix, li[2])
+        if len(li) == 2:
+            user_info = get_character_info(li[0], li[1], prefix)
 
-    if (user_info is not None):
-        # Gets a character's Info
-        if prefix == '#info':
-            return emify_info(em, INFO_DATA, **user_info)
+        elif len(li) == 3:
+            user_info = get_character_info(li[0], li[1], prefix, li[2])
 
-        # Gets a character's IO Score
-        if prefix == '#ioscore':
-            return emify_info(em, IOSCORE_DATA, **user_info)
+    except Exception as e:
+        raise e
 
-        # Gets a character's "best" or "highest" Mythic+ runs
-        if prefix == '#best' or prefix == '#highest':
-            return emify_info(em, BEST_DATA, **user_info)
+    # Gets a character's Info
+    if prefix == '#info':
+        return emify_info(em, INFO_DATA, **user_info)
 
-    return None
+    # Gets a character's IO Score
+    if prefix == '#ioscore':
+        return emify_info(em, IOSCORE_DATA, **user_info)
+
+    # Gets a character's "best" or "highest" Mythic+ runs
+    if prefix == '#best' or prefix == '#highest':
+        return emify_info(em, BEST_DATA, **user_info)
