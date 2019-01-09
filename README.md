@@ -47,10 +47,7 @@ A simple Raider.io bot for discord
 
 * add the bot to your discord server by going to your unique client ID link: `https://discordapp.com/oauth2/authorize?client_id=<your_client_id>&scope=bot`
 
-* run the app: `python3 __init__.py` *(as long as the process remains running the bot will be online)*
+* run the app: `python3 doob_bot/__init__.py` *(as long as the process remains running the bot will be online)*
 
-## SaltStack Deployment Config
-
-If you are somewhat familiar with SaltStack, feel free to look at my state files in the /salt directory as an example. They are set up to deploy the bot as a service to a machine running Centos 7.
 
 *created by Stephen Onnen July 2018*

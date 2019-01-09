@@ -15,7 +15,9 @@ def emify_info(em, wanted_items: list, **data):
         Embed object with all "wanted" data correctly added to it.
     """
     em.set_thumbnail(url=data.get('thumbnail_url'))
+    print("here")
     for k, v in data.items():
+
         if not k.startswith('thumb') and k in wanted_items:
             if type(v) is dict:
                 v_string = ''

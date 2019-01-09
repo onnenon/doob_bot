@@ -29,8 +29,8 @@ MYTHIC_PLUS_PREFIX = []
 @BOT.event
 async def on_ready():
     """Prints to console when bot is running successfully. """
-    print(f"{BOT.user.name} Is Running")
-    print(f"With the ID: {BOT.user.id}")
+    LOGGER.debug(f"{BOT.user.name} Is Running")
+    LOGGER.debug(f"With the ID: {BOT.user.id}")
 
 
 @BOT.event
@@ -42,7 +42,7 @@ async def on_message(message):
 
     Returns:
         Sends a message to the channel of the message arg with an embed object if data was returned, or an error message
-        if no data was recieved from Raider.io's API
+        and exeption was thrown while attempting to call Raider.io's API
     """
     # Split the message into a list
     args = message.content.split(" ")
@@ -64,10 +64,10 @@ async def on_message(message):
                 message_embed = char_api_request(arg_fix, prefix, embed)
                 await message.channel.send(embed=message_embed)
             except ValueError as e:
-                LOGGER.debug({"Exception:": str(e)})
+                LOGGER.error({"Exception:": str(e)})
                 await message.channel.send("Invalid number of arguments!")
             except Exception as e:
-                LOGGER.debug({"Exception:": str(e)})
+                LOGGER.error({"Exception:": str(e)})
                 await message.channel.send("No data was returned from Raider.io, check your spelling!!")
 
         if prefix in MYTHIC_PLUS_PREFIX:
