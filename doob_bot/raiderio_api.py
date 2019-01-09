@@ -16,16 +16,20 @@ LOGGER = get_logger(log_level="DEBUG")
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {'Content-Type': 'application/json'}
 
-INFO_DATA = [
-    'name', 'class', 'active_spec_name', 'region', 'realm', 'faction', 'gear', 'guild', 'profile_url', 'thumbnail_url'
-]
-IOSCORE_DATA = [
-    'name', 'realm', 'class', 'active_spec_name', 'mythic_plus_scores', 'thumbnail_url', 'all', 'dps', 'healer', 'tank'
-]
-BEST_DATA = [
-    'name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs', 'mythic_plus_highest_level_runs', 'dungeon',
-    'mythic_level', 'num_keystone_upgrades', 'score', 'thumbnail_url'
-]
+DATA_LISTS = {
+    "#info": [
+        'name', 'class', 'active_spec_name', 'region', 'realm', 'faction', 'gear', 'guild', 'profile_url',
+        'thumbnail_url'
+    ],
+    "#ioscore": [
+        'name', 'realm', 'class', 'active_spec_name', 'mythic_plus_scores', 'thumbnail_url', 'all', 'dps', 'healer',
+        'tank'
+    ],
+    "#best": [
+        'name', 'class', 'active_spec_name', 'realm', 'mythic_plus_best_runs', 'mythic_plus_highest_level_runs',
+        'dungeon', 'mythic_level', 'num_keystone_upgrades', 'score', 'thumbnail_url'
+    ]
+}
 
 
 def get_character_info(name: str, realm: str, prefix, region: str = "US"):
@@ -67,7 +71,7 @@ def get_character_info(name: str, realm: str, prefix, region: str = "US"):
 
     response = requests.get(api_url, headers=HEADERS)
 
-    if response.status_code != 200:
+    if response.status_code != 200 or response is None:
         raise Exception("Bad response status code: " + response.status_code)
         LOGGER.debug({"Status Code:": response.status_code})
 
@@ -105,13 +109,4 @@ def char_api_request(li: list, prefix: str, em):
         raise e
 
     # Gets a character's Info
-    if prefix == '#info':
-        return emify_info(em, INFO_DATA, **user_info)
-
-    # Gets a character's IO Score
-    if prefix == '#ioscore':
-        return emify_info(em, IOSCORE_DATA, **user_info)
-
-    # Gets a character's "best" or "highest" Mythic+ runs
-    if prefix == '#best' or prefix == '#highest':
-        return emify_info(em, BEST_DATA, **user_info)
+    return emify_info(em, DATA_LISTS.get(prefix), **user_info)

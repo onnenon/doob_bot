@@ -29,8 +29,8 @@ MYTHIC_PLUS_PREFIX = []
 @BOT.event
 async def on_ready():
     """Prints to console when bot is running successfully. """
-    print(f"{BOT.user.name} Is Running")
-    print(f"With the ID: {BOT.user.id}")
+    LOGGER.debug(f"{BOT.user.name} Is Running")
+    LOGGER.debug(f"With the ID: {BOT.user.id}")
 
 
 @BOT.event
