@@ -2,6 +2,10 @@
 Utility functions for doob_bot.
 """
 
+from spylogger import get_logger
+
+LOGGER = get_logger(log_level="DEBUG")
+
 
 def add_data_to_embed(em, wanted_items: list, **data):
     """Takes given embed object and data, and adds the data to the embed object.
@@ -15,6 +19,8 @@ def add_data_to_embed(em, wanted_items: list, **data):
         Embed object with all "wanted" data correctly added to it.
     """
     em.set_thumbnail(url=data.get('thumbnail_url'))
+    LOGGER.debug({"Thumbnail URL": data.get('thumbnail_url')})
+
     for k, v in data.items():
 
         if not k.startswith('thumb') and k in wanted_items:
