@@ -25,9 +25,7 @@ def handle_message(message):
         message: Message object recieved by discord bot.
 
     Returns:
-        Sends a message to the channel of the message arg with an embed object
-        if data was returned, or an error message and exeption was thrown while
-        attempting to call Raider.io's API
+       Embed object if the message's prefix was a command, else None 
     """
 
     args = message.content.split(" ")
