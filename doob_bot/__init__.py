@@ -29,20 +29,21 @@ MYTHIC_PLUS_PREFIX = []
 @BOT.event
 async def on_ready():
     """Prints to console when bot is running successfully. """
-    LOGGER.debug(f"{BOT.user.name} Is Running")
-    LOGGER.debug(f"With the ID: {BOT.user.id}")
+    LOGGER.info(f"{BOT.user.name} Is Running. ID: {BOT.user.id}")
 
 
 @BOT.event
 async def on_message(message):
-    """Scans messages in text channels of a server and calls the Raider.io API when a defined prefix is used.
+    """Scans messages in text channels of a server and calls the Raider.io API
+       when a defined prefix is used.
 
     Args:
         message: Message object recieved by discord bot.
 
     Returns:
-        Sends a message to the channel of the message arg with an embed object if data was returned, or an error message
-        and exeption was thrown while attempting to call Raider.io's API
+        Sends a message to the channel of the message arg with an embed object
+        if data was returned, or an error message and exeption was thrown while
+        attempting to call Raider.io's API
     """
     # Split the message into a list
     args = message.content.split(" ")
@@ -56,7 +57,7 @@ async def on_message(message):
             embed = discord.Embed(
                 title="Doob Bot",
                 colour=discord.Colour(0x52472b),
-                url="https://discordapp.com",
+                url="http://github.com/onnenon/doob_bot",
                 description="A simple Discord bot for getting Raider.io Data\n",
                 timestamp=datetime.datetime.utcnow())
             embed.set_footer(text=("-" * 115))
@@ -68,7 +69,9 @@ async def on_message(message):
                 await message.channel.send("Invalid number of arguments!")
             except Exception as e:
                 LOGGER.error({"Exception:": str(e)})
-                await message.channel.send("No data was returned from Raider.io, check your spelling!!")
+                await message.channel.send(
+                    "No data was returned from Raider.io, check your spelling!!"
+                )
 
         if prefix in MYTHIC_PLUS_PREFIX:
             # TODO Create commands that get non-characterinfo from API
