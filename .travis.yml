@@ -11,4 +11,4 @@ install:
 
 # Run Tests
 script: 
-  - python -m unittest discover
+  - bash run-tests.sh 
