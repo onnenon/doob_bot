@@ -1,6 +1,7 @@
 # Doob Bot
 
 [![Build Status](https://travis-ci.org/onnenon/doob_bot.svg?branch=master)](https://travis-ci.org/onnenon/doob_bot)
+[![Coverage Status](https://coveralls.io/repos/github/onnenon/doob_bot/badge.svg?branch=master)](https://coveralls.io/github/onnenon/doob_bot?branch=master)
 
 A simple Raider.io bot for discord
 
