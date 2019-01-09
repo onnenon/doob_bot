@@ -2,19 +2,15 @@
 Utility functions for doob_bot.
 """
 
-from spylogger import get_logger
-
-LOGGER = get_logger(log_level="DEBUG")
+from doob_bot.settings import LOGGER
 
 
 def add_data_to_embed(em, wanted_items: list, **data):
     """Takes given embed object and data, and adds the data to the embed object.
-
     Args:
         em: Embed object to add formatted data to.
         wanted_items: List of 'Keys' to be pulled from data and added to embed.
         data: Dictionary returned from the Raider.io API call.
-
     Returns:
         Embed object with all "wanted" data correctly added to it.
     """
