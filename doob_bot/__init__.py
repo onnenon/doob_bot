@@ -7,6 +7,7 @@
 
 """
 
+
 import os
 
 from discord.ext import commands
@@ -14,7 +15,7 @@ from discord.ext import commands
 from doob_bot.handler import handle_message
 from doob_bot.settings import LOGGER
 
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 BOT = commands.Bot(command_prefix="#")
 
@@ -40,7 +41,8 @@ async def on_message(message):
     except Exception as e:
         LOGGER.error({"Exception:": str(e)})
         await message.channel.send(
-            "No data was returned from Raider.io, check your spelling!!")
+            "No data was returned from Raider.io, check your spelling!!"
+        )
 
 
 if __name__ == "__main__":
