@@ -38,9 +38,7 @@ class GetCharInfoTests(unittest.TestCase):
 
     @patch("requests.get", return_value=response_200)
     def test_response_002(self, mock):
-        self.assertEqual({},
-                         db.get_character_info("name", "realm", "#info",
-                                               "Region"))
+        self.assertEqual({}, db.get_character_info("name", "realm", "#info", "Region"))
 
     @patch("requests.get", return_value=response_400)
     def test_bad_prefix_001(self, mock):

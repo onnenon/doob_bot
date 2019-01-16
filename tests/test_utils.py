@@ -11,13 +11,11 @@ class UtilsTests(unittest.TestCase):
         self.data = {"thumbnail_url": "https://localhost"}
         self.value_is_dict = {"key_1": {"key_2": "value"}}
         self.value_is_list = {
-            "key_1": [{
-                "key_2": "value_2"
-            }, {
-                "key_3": "value3"
-            }, {
-                "random": "random_value"
-            }]
+            "key_1": [
+                {"key_2": "value_2"},
+                {"key_3": "value3"},
+                {"random": "random_value"},
+            ]
         }
         self.value_is_string = {"key_1": "value_1"}
 

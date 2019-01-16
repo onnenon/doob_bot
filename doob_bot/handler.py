@@ -1,7 +1,5 @@
 """
-
 Raider.io API info at https://raider.io/api#!/
-
 """
 import datetime
 import json
@@ -9,12 +7,19 @@ import requests
 
 import discord
 
+
 from doob_bot.exceptions import BadStatusCode
-from doob_bot.settings import CHAR_PREFIX, DATA_LISTS, FIELD_DATA, LOGGER, MYTHIC_PLUS_PREFIX
+from doob_bot.settings import (
+    CHAR_PREFIX,
+    DATA_LISTS,
+    FIELD_DATA,
+    LOGGER,
+    MYTHIC_PLUS_PREFIX,
+)
 from doob_bot.utils import add_data_to_embed
 
 API_URL_BASE = "https://raider.io/api/v1/"
-HEADERS = {'Content-Type': 'application/json'}
+HEADERS = {"Content-Type": "application/json"}
 
 
 def handle_message(message):
@@ -25,9 +30,7 @@ def handle_message(message):
         message: Message object recieved by discord bot.
 
     Returns:
-        Sends a message to the channel of the message arg with an embed object
-        if data was returned, or an error message and exeption was thrown while
-        attempting to call Raider.io's API
+       Embed object if the message's prefix was a command, else None 
     """
 
     args = message.content.split(" ")
@@ -42,10 +45,11 @@ def handle_message(message):
         if prefix in CHAR_PREFIX:
             embed = discord.Embed(
                 title="Doob Bot",
-                colour=discord.Colour(0x52472b),
+                colour=discord.Colour(0x52472B),
                 url="http://github.com/onnenon/doob_bot",
                 description="A simple Discord bot for getting Raider.io Data\n",
-                timestamp=datetime.datetime.utcnow())
+                timestamp=datetime.datetime.utcnow(),
+            )
             embed.set_footer(text=("-" * 115))
 
             return char_api_request(arg_fix, prefix, embed)
@@ -127,7 +131,8 @@ def get_character_info(name: str, realm: str, prefix, region: str = "US"):
     if response.status_code != 200 or response is None:
         raise BadStatusCode(
             "Bad response status code: " + str(response.status_code),
-            status_code=response.status_code)
+            status_code=response.status_code,
+        )
 
     r_content = json.loads(response.content)
     LOGGER.debug({"Response Content": r_content})

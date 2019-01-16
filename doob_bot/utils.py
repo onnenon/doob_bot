@@ -1,33 +1,35 @@
 """
 Utility functions for doob_bot.
 """
-
 from doob_bot.settings import LOGGER
 
 
 def add_data_to_embed(em, wanted_items: list, **data):
     """Takes given embed object and data, and adds the data to the embed object.
+
     Args:
         em: Embed object to add formatted data to.
         wanted_items: List of 'Keys' to be pulled from data and added to embed.
         data: Dictionary returned from the Raider.io API call.
+
     Returns:
         Embed object with all "wanted" data correctly added to it.
     """
-    em.set_thumbnail(url=data.get('thumbnail_url'))
-    LOGGER.debug({"Thumbnail URL": data.get('thumbnail_url')})
+    em.set_thumbnail(url=data.get("thumbnail_url"))
+    LOGGER.debug({"Thumbnail URL": data.get("thumbnail_url")})
 
     for k, v in data.items():
 
-        if not k.startswith('thumb') and k in wanted_items:
+        if not k.startswith("thumb") and k in wanted_items:
             if type(v) is dict:
-                v_string = ''
+                v_string = ""
                 for key, value in v.items():
                     v_string += f"{key.capitalize().replace('_', ' ')}: {value}\n"
                 em.add_field(
                     name=f"{k.capitalize().replace('_', ' ')}",
                     value=v_string,
-                    inline=True)
+                    inline=True,
+                )
             elif type(v) is list:
                 for item in v:
                     value_str = ""
@@ -39,5 +41,6 @@ def add_data_to_embed(em, wanted_items: list, **data):
                 em.add_field(
                     name=f"{k.capitalize().replace('_', ' ')}:",
                     value=f"{v}",
-                    inline=True)
+                    inline=True,
+                )
     return em
