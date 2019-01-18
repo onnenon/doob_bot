@@ -6,8 +6,6 @@
  Github: https://github.com/onnenon/doob_bot
 
 """
-
-
 import os
 
 from discord.ext import commands
