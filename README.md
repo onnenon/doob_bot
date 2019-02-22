@@ -1,5 +1,6 @@
 # Doob Bot
 
+[![CircleCI](https://circleci.com/gh/onnenon/doob_bot.svg?style=svg)](https://circleci.com/gh/onnenon/doob_bot)
 [![Build Status](https://travis-ci.org/onnenon/doob_bot.svg?branch=master)](https://travis-ci.org/onnenon/doob_bot)
 [![codecov](https://codecov.io/gh/onnenon/doob_bot/branch/master/graph/badge.svg)](https://codecov.io/gh/onnenon/doob_bot)
 [![Maintainability](https://api.codeclimate.com/v1/badges/673d65713d212728cd2c/maintainability)](https://codeclimate.com/github/onnenon/doob_bot/maintainability)
@@ -18,12 +19,12 @@ A simple Raider.io bot for discord
 
 ### All commands require a character name and realm name. If no region is given the Bot will default to US
 
-|Command                                            |Description                                                 |
-|---------------------------------------------------|------------------------------------------------------------|
-|`#info <character> <realm_name> <region>`          | Basic info about character.                                |
-|`#ioscore <character> <realm_name> <region>`       | The Raider.io score of a character.                        |
-|`#highest <character> <realm_name> <region>`       | Three highest mythic dungeons completed by character.      |
-|`#best <character> <realm_name> <region>`          | Three best scoring mythic dungeons completed by character. |
+| Command                                      | Description                                                |
+| -------------------------------------------- | ---------------------------------------------------------- |
+| `#info <character> <realm_name> <region>`    | Basic info about character.                                |
+| `#ioscore <character> <realm_name> <region>` | The Raider.io score of a character.                        |
+| `#highest <character> <realm_name> <region>` | Three highest mythic dungeons completed by character.      |
+| `#best <character> <realm_name> <region>`    | Three best scoring mythic dungeons completed by character. |
 
 ## Screenshots
 

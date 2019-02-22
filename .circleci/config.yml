@@ -1,0 +1,13 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: python:3.7
+    steps:
+      - checkout
+      - run: pip install -r requirements.txt
+      - run: pip install codecov
+      - run: pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py
+      - run: pip install -e .
+      - run: bash run-tests.sh
+      - run: codecov
