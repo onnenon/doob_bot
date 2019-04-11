@@ -1,13 +1,10 @@
 pipeline:
   build:
     image: python:3.7
-    # environment:
-    #   CODECOV_TOKEN:
-    #     from_secret: codecov_token
     commands:
       - python -m pip install -r requirements.txt
       - python -m pip install codecov
       - python -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py
       - python -m pip install -e .
       - bash run-tests.sh
-      #- codecov -t ${CODECOV_TOKEN}
+      - codecov -t ${CODECOV_TOKEN}
