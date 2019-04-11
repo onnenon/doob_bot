@@ -8,3 +8,4 @@ pipeline:
       - python -m pip install -e .
       - bash run-tests.sh
       - codecov -t ${CODECOV_TOKEN}
+    secrets: [ codecov_token ]
