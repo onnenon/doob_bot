@@ -30,9 +30,9 @@ def add_list_field(em, wanted_items: list, k, v):
     """
     for item in v:
         value_str = ""
-    for k, v in item.items():
-        if k in wanted_items:
-            value_str += f"{k.capitalize().replace('_', ' ')}: {v}\n"
+        for k, v in item.items():
+            if k in wanted_items:
+                value_str += f"{k.capitalize().replace('_', ' ')}: {v}\n"
     em.add_field(name=("+" * 25), value=value_str, inline=False)
 
 
