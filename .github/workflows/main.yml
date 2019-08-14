@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Install
         run: |
+          python3 -m pip install setup-tools
           python3 -m pip install -r requirements.txt
           python3 -m pip install -e .
       - name: Test
