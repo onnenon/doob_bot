@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Install
         run: |
-          sudo apt-get install -y python-setuptools
+          sudo apt-get install -y python3-setuptools
           python3 -m pip install -r requirements.txt
           python3 -m pip install -e .
       - name: Test
