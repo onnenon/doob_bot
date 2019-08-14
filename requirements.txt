@@ -6,4 +6,3 @@ nose
 rednose
 pytest
 coverage
-setuptools
