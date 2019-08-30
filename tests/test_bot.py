@@ -3,7 +3,6 @@ from doob_bot import on_message
 
 
 class BotTest(TestCase):
-    @skip
-    def test_001_invalid_arguments(self):
-        with self.assertRaises(ValueError):
-            pass
+    def test_001_on_message(self):
+        hm = doob_bot.handler()
+
