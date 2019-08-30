@@ -3,7 +3,7 @@ pipeline:
     image: python:3.7
     commands:
       - python -m pip install codecov poetry
-      - poetry install
+      - python -m poetry install
       - bash run-tests.sh
       - codecov -t $CODECOV_TOKEN
     secrets: [codecov_token]
