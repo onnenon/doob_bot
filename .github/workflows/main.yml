@@ -12,5 +12,6 @@ jobs:
         run: |
           sudo apt-get install -y python3-setuptools python3-venv
           python3 -m pip install poetry
+          python -m poetry config settings.virtualenvs.create false
           python3 -m poetry install
           bash run-tests.sh
