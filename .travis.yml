@@ -7,7 +7,7 @@ sudo: true
 install:
   - python -m pip install codecov
   - python -m pip install poetry
-  - pytyon -m poetry install
+  - python -m poetry install
 
 # Run Tests
 script:
