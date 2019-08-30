@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@master
       - name: Install
         run: |
-          sudo apt-get install -y python3-setuptools
+          sudo apt-get install -y python3-setuptools python3-venv
           python3 -m pip install poetry
           python3 -m poetry install
           bash run-tests.sh
