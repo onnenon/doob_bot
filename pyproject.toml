@@ -10,6 +10,7 @@ python = "^3.6"
 "discord.py" = "^1.2"
 requests = "^2.22"
 spylogger = "^1.2"
+wheel = "^0.33.6"
 
 [tool.poetry.dev-dependencies]
 mock = "^3.0"
