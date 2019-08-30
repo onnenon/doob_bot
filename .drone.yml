@@ -2,9 +2,8 @@ pipeline:
   build:
     image: python:3.7
     commands:
-      - python -m pip install -r requirements.txt
-      - python -m pip install codecov
-      - python -m pip install -e .
+      - python -m pip install codecov poetry
+      - poetry install
       - bash run-tests.sh
       - codecov -t $CODECOV_TOKEN
-    secrets: [ codecov_token ]
+    secrets: [codecov_token]
