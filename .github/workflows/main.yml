@@ -13,4 +13,5 @@ jobs:
           sudo apt-get install -y python3-setuptools python3-venv
           python3 -m pip install wheel poetry
           python3 -m poetry install
+          ./home/runner/.cache/pypoetry/virtualenvs/bin/activate
           bash run-tests.sh
