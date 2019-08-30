@@ -1,9 +1,6 @@
-from unittest import TestCase, skip
-from doob_bot import on_message
+from unittest import TestCase
 
 
 class BotTest(TestCase):
-    @skip
-    def test_001_invalid_arguments(self):
-        with self.assertRaises(ValueError):
-            pass
+    def test_001_on_message(self):
+        self.assertTrue(True)

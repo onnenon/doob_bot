@@ -6,3 +6,4 @@ nose
 rednose
 pytest
 coverage
+wheel

@@ -4,16 +4,14 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@master
-    - name: Install
-      run: | 
-        python3 -m pip install -r requirements.txt,
-        python3 -m pip install -e .
-    - name: Test
-      run: |
-        bash run-tests.sh
-        
+      - uses: actions/checkout@master
+      - name: Install
+        run: |
+          sudo apt-get install -y python3-setuptools python3-venv
+          python3 -m pip install wheel poetry
+          python3 -m poetry install
+          ./home/runner/.cache/pypoetry/virtualenvs/bin/activate
+          bash run-tests.sh

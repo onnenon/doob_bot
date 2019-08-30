@@ -1,8 +1,7 @@
 run:
-	python3 doob_bot/__init__.py
+	python -m doob_bot
 
 test:
-	pip install -r requirements.txt
 	sh run-tests.sh
 
 build:

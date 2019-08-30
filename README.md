@@ -54,4 +54,4 @@ A simple Raider.io bot for discord
 - run the app: `python3 doob_bot/__init__.py` _(as long as the process remains running the bot will be online)_
 
 _created by Stephen Onnen July 2018_
-_updated April 2019_
+_updated August 2019_
