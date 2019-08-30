@@ -4,4 +4,5 @@ pipeline:
     commands:
       - pip install poetry coverage
       - poetry install
-      - bash run-tests.sh
+      - python -m coverage run --source doob_bot -m pytest tests -p no:warnings
+      - python -m coverage report
