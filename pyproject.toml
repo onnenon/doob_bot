@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "doob_bot"
-version = "0.1.0"
+version = "1.0.0"
 description = "A Simple Raider.io bot for Discord"
 authors = ["Stephen Onnen <stephen.onnen@gmail.com>"]
 license = "MIT"
