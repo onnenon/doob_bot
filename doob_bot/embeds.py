@@ -71,15 +71,18 @@ def get_char_info_embed(character_info: CharacterInfoData) -> Embed:
 
 
 def get_ioscore_embed(ioscore_data: IoscoreData) -> Embed:
+    # TODO
     embed = get_base_embed()
     return embed
 
 
 def get_best_run_embed(best_run_data: BestRunData) -> Embed:
+    # TODO
     embed = get_base_embed()
     return embed
 
 
 def get_highest_run_embed(highest_run_data: HighestRunData) -> Embed:
+    # TODO
     embed = get_base_embed()
     return embed
