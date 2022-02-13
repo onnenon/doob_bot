@@ -1,9 +1,0 @@
-pipeline:
-  build:
-    image: python:3.7
-    commands:
-      - python -m pip install poetry coverage
-      - python -m poetry config settings.virtualenvs.create false
-      - python -m poetry install
-      - python -m coverage run --source doob_bot -m pytest tests -p no:warnings
-      - python -m coverage report

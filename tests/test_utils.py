@@ -1,6 +1,7 @@
 import unittest
 
-from discord import Embed
+from nextcord import Embed
+
 import doob_bot.utils as db
 
 
