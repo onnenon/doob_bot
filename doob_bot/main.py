@@ -22,10 +22,13 @@ async def on_ready():
 @BOT.command()
 async def info(ctx: Context, char_name: str, realm: str, region: Optional[str]):
     """When a message occurs, calls the handle message function"""
-    LOGGER.info(f"{char_name} {realm} {region}")
-    character_info = get_character_info(char_name, realm, region, ["gear", "guild"])
-    embed = get_char_info_embed(character_info)
-    await ctx.send(embed=embed)
+    try:
+        LOGGER.info(f"{char_name} {realm} {region}")
+        character_info = get_character_info(char_name, realm, region, ["gear", "guild"])
+        embed = get_char_info_embed(character_info)
+        await ctx.send(embed=embed)
+    except Exception:
+        await ctx.send("Oops, something happened")
 
 
 @BOT.command()
