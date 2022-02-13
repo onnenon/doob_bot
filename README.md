@@ -1,9 +1,7 @@
 # Doob Bot
 
-[![CircleCI](https://circleci.com/gh/onnenon/doob_bot.svg?style=svg)](https://circleci.com/gh/onnenon/doob_bot)
-[![Build Status](https://travis-ci.org/onnenon/doob_bot.svg?branch=master)](https://travis-ci.org/onnenon/doob_bot)
-[![codecov](https://codecov.io/gh/onnenon/doob_bot/branch/master/graph/badge.svg)](https://codecov.io/gh/onnenon/doob_bot)
-[![Build Status](https://cloud.drone.io/api/badges/onnenon/doob_bot/status.svg)](https://cloud.drone.io/onnenon/doob_bot)
+![checks workflow](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/main.yml/badge.svg)
+[![codecov](https://codecov.io/gh/onnenon/doob_bot/branch/main/graph/badge.svg?token=9R3Oce1I8W)](https://codecov.io/gh/onnenon/doob_bot)
 [![Maintainability](https://api.codeclimate.com/v1/badges/673d65713d212728cd2c/maintainability)](https://codeclimate.com/github/onnenon/doob_bot/maintainability)
 
 A simple Raider.io bot for discord
