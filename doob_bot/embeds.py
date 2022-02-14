@@ -19,7 +19,7 @@ def get_base_embed() -> Embed:
     return embed
 
 
-def add_dict_embed_field(em: Embed, k, v) -> None:
+def add_dict_embed_field(em: Embed, k, v, inline=True) -> None:
     """Helper function to add dict to embed object with some formatting.
 
     Args:
@@ -31,7 +31,7 @@ def add_dict_embed_field(em: Embed, k, v) -> None:
     for key, value in v.items():
         v_string += f"{key.capitalize().replace('_', ' ')}: {value}\n"
     em.add_field(
-        name=f"{k.capitalize().replace('_', ' ')}", value=v_string, inline=True
+        name=f"{k.capitalize().replace('_', ' ')}", value=v_string, inline=inline
     )
 
 
@@ -71,8 +71,20 @@ def get_char_info_embed(character_info: CharacterInfoData) -> Embed:
 
 
 def get_ioscore_embed(ioscore_data: IoscoreData) -> Embed:
-    # TODO
     embed = get_base_embed()
+
+    embed.set_thumbnail(url=ioscore_data.thumbnail_url)
+    embed.add_field(name="Name", value=ioscore_data.name)
+    embed.add_field(name="Class", value=ioscore_data.class_.value)
+    embed.add_field(name="Active Spec", value=ioscore_data.active_spec_name)
+    embed.add_field(name="Realm", value=ioscore_data.realm)
+    add_dict_embed_field(
+        embed,
+        "Mythic Plus Scores",
+        ioscore_data.mythic_plus_scores.__dict__,
+        inline=False,
+    )
+
     return embed
 
 

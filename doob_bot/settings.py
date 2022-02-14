@@ -2,7 +2,7 @@ import logging
 import os
 import sys
 
-LOG_LEVEL = logging.DEBUG
+LOG_LEVEL = logging.INFO
 
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(LOG_LEVEL)
