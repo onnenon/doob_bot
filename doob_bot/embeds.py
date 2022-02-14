@@ -1,5 +1,4 @@
 import datetime
-from typing import List
 
 import nextcord
 from nextcord.embeds import Embed
@@ -33,22 +32,6 @@ def add_dict_embed_field(em: Embed, k, v, inline=True) -> None:
     em.add_field(
         name=f"{k.capitalize().replace('_', ' ')}", value=v_string, inline=inline
     )
-
-
-def add_list_embed_field(em: Embed, wanted_items: List[str], k: str, v: str) -> None:
-    """Helper function to add list to embed object with some formatting.
-
-    Args:
-        em: Embed object to add fields to.
-        k: The key for the list.
-        v: The list itself.
-    """
-    for item in v:
-        value_str = ""
-        for k, v in item.items():
-            if k in wanted_items:
-                value_str += f"{k.capitalize().replace('_', ' ')}: {v}\n"
-        em.add_field(name=("+" * 25), value=value_str, inline=False)
 
 
 def get_char_info_embed(character_info: CharacterInfoData) -> Embed:
@@ -91,10 +74,22 @@ def get_ioscore_embed(ioscore_data: IoscoreData) -> Embed:
 def get_best_run_embed(best_run_data: BestRunData) -> Embed:
     # TODO
     embed = get_base_embed()
+
+    embed.set_thumbnail(url=best_run_data.thumbnail_url)
+    embed.add_field(name="Name", value=best_run_data.name)
+    embed.add_field(name="Class", value=best_run_data.class_.value)
+    embed.add_field(name="Active Spec", value=best_run_data.active_spec_name)
+    embed.add_field(name="Realm", value=best_run_data.realm)
     return embed
 
 
 def get_highest_run_embed(highest_run_data: HighestRunData) -> Embed:
     # TODO
     embed = get_base_embed()
+
+    embed.set_thumbnail(url=highest_run_data.thumbnail_url)
+    embed.add_field(name="Name", value=highest_run_data.name)
+    embed.add_field(name="Class", value=highest_run_data.class_.value)
+    embed.add_field(name="Active Spec", value=highest_run_data.active_spec_name)
+    embed.add_field(name="Realm", value=highest_run_data.realm)
     return embed
