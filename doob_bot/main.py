@@ -31,7 +31,7 @@ async def on_ready():
 
 
 @BOT.command()
-async def info(ctx: Context, char_name: str, realm: str, region: Optional[str]):
+async def info(ctx: Context, char_name: str, realm: str, region: Optional[str]) -> None:
     try:
         LOGGER.info(f"{char_name} {realm} {region}")
         character_info = get_character_info_data(
@@ -45,7 +45,9 @@ async def info(ctx: Context, char_name: str, realm: str, region: Optional[str]):
 
 
 @BOT.command()
-async def ioscore(ctx: Context, char_name: str, realm: str, region: Optional[str]):
+async def ioscore(
+    ctx: Context, char_name: str, realm: str, region: Optional[str]
+) -> None:
     try:
         LOGGER.info(f"{char_name} {realm} {region}")
         ioscore_info = get_ioscore_data(CommandCharacterData(char_name, realm, region))
@@ -57,7 +59,7 @@ async def ioscore(ctx: Context, char_name: str, realm: str, region: Optional[str
 
 
 @BOT.command()
-async def best(ctx: Context, char_name: str, realm: str, region: Optional[str]):
+async def best(ctx: Context, char_name: str, realm: str, region: Optional[str]) -> None:
     try:
         LOGGER.info(f"{char_name} {realm} {region}")
         best_run_data = get_best_run_data(
@@ -71,11 +73,13 @@ async def best(ctx: Context, char_name: str, realm: str, region: Optional[str]):
 
 
 @BOT.command()
-async def highest(ctx: Context, char_name: str, realm: str, region: Optional[str]):
+async def highest(
+    ctx: Context, char_name: str, realm: str, region: Optional[str]
+) -> None:
     try:
         LOGGER.info(f"{char_name} {realm} {region}")
         highest_run_data = get_highest_run_data(
-            char_name, realm, region, ["gear", "guild"]
+            CommandCharacterData(char_name, realm, region)
         )
         embed = get_highest_run_embed(highest_run_data)
         await ctx.send(embed=embed)

@@ -1,6 +1,3 @@
-"""
-Raider.io API info at https://raider.io/api#!/
-"""
 import json
 from typing import Any, Dict, List, Optional
 
