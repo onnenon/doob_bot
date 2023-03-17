@@ -558,21 +558,22 @@ files = [
 
 [[package]]
 name = "nextcord"
-version = "2.0.0a7"
+version = "2.4.1"
 description = "A Python wrapper for the Discord API forked from discord.py"
 category = "main"
 optional = false
 python-versions = ">=3.8.0"
 files = [
-    {file = "nextcord-2.0.0a7.tar.gz", hash = "sha256:bbeebf703f88146394720f403feebd5ac231f4911f63c88473302f3f679418b6"},
+    {file = "nextcord-2.4.1.tar.gz", hash = "sha256:7d37c9150e33d53d1e30866db604ae5230ff97626c26a156071a7b406669d193"},
 ]
 
 [package.dependencies]
 aiohttp = ">=3.8.0,<4.0.0"
+typing_extensions = ">=4.2.0,<5"
 
 [package.extras]
-docs = ["sphinx (==4.0.2)", "sphinxcontrib-websupport", "sphinxcontrib_trio (==1.1.2)"]
-speed = ["Brotli", "aiodns (>=1.1)", "cchardet", "orjson (>=3.5.4)"]
+docs = ["sphinx (==5.2.3)", "sphinxcontrib-websupport", "sphinxcontrib_trio (==1.1.2)", "typing_extensions (>=4.2.0,<5)"]
+speed = ["aiohttp[speedups]", "orjson (>=3.5.4)"]
 voice = ["PyNaCl (>=1.3.0,<1.5)"]
 
 [[package]]
@@ -779,14 +780,14 @@ files = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.1.0"
-description = "Backported and Experimental Type Hints for Python 3.6+"
+version = "4.5.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "typing_extensions-4.1.0-py3-none-any.whl", hash = "sha256:c13180fbaa7cd97065a4915ceba012bdb31dc34743e63ddee16360161d358414"},
-    {file = "typing_extensions-4.1.0.tar.gz", hash = "sha256:ba97c5143e5bb067b57793c726dd857b1671d4b02ced273ca0538e71ff009095"},
+    {file = "typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},
+    {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
 ]
 
 [[package]]
