@@ -1,7 +1,7 @@
 from typing import Optional
 
 import discord
-from discord import commands
+from discord.ext import commands
 from discord.ext.commands.context import Context
 
 from doob_bot.embeds import (
@@ -90,5 +90,11 @@ async def highest(
         await ctx.send("Oops, something happened")
 
 
-if __name__ == "__main__":
+def main():
+    if not BOT_TOKEN:
+        print("No bot token found, exiting...")
     BOT.run(BOT_TOKEN)
+
+
+if __name__ == "__main__":
+    main()

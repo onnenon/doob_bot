@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Any, Dict
 
-from pydantic import BaseModel, Extra
+from pydantic import BaseModel
 from pydantic.dataclasses import dataclass
 
 
@@ -52,7 +52,7 @@ class MythicPlusScores(BaseModel):
     dps: str
 
     class Config:
-        extra = Extra.ignore
+        extra = "ignore"
 
 
 class CharacterBaseData(BaseModel):
@@ -63,21 +63,16 @@ class CharacterBaseData(BaseModel):
     thumbnail_url: str
 
     class Config:
-        extra = Extra.ignore
+        extra = "ignore"
         fields = {"class_": "class"}
 
 
-class CharacterInfoData(BaseModel):
+class CharacterInfoData(CharacterBaseData):
     region: WowRegion
     faction: WowFaction
     gear: Dict[str, Any]
     guild: Guild
     profile_url: str
-    # thumbnail_url: str
-    # name: str
-    # active_spec_name: str
-    # class_: str
-    # realm: str
 
 
 class IoscoreData(CharacterBaseData):

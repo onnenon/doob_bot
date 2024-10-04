@@ -1,15 +1,15 @@
 import datetime
 
-import nextcord
-from nextcord.embeds import Embed
+import discord
+from discord.embeds import Embed
 
 from doob_bot.models import BestRunData, CharacterInfoData, HighestRunData, IoscoreData
 
 
-def get_base_embed() -> Embed:
+def _get_base_embed() -> Embed:
     embed = Embed(
         title="Doob Bot",
-        colour=nextcord.Colour(0x52472B),
+        colour=discord.Colour(0x52472B),
         url="http://github.com/onnenon/doob_bot",
         description="A simple Discord bot for getting Raider.io Data\n",
         timestamp=datetime.datetime.now(),
@@ -18,7 +18,7 @@ def get_base_embed() -> Embed:
     return embed
 
 
-def add_dict_embed_field(em: Embed, k, v, inline=True) -> None:
+def _add_dict_embed_field(em: Embed, k, v, inline=True) -> None:
     """Helper function to add dict to embed object with some formatting.
 
     Args:
@@ -35,7 +35,7 @@ def add_dict_embed_field(em: Embed, k, v, inline=True) -> None:
 
 
 def get_char_info_embed(character_info: CharacterInfoData) -> Embed:
-    embed = get_base_embed()
+    embed = _get_base_embed()
 
     embed.set_thumbnail(url=character_info.thumbnail_url)
     embed.add_field(name="Name", value=character_info.name)
@@ -54,14 +54,14 @@ def get_char_info_embed(character_info: CharacterInfoData) -> Embed:
 
 
 def get_ioscore_embed(ioscore_data: IoscoreData) -> Embed:
-    embed = get_base_embed()
+    embed = _get_base_embed()
 
     embed.set_thumbnail(url=ioscore_data.thumbnail_url)
     embed.add_field(name="Name", value=ioscore_data.name)
     embed.add_field(name="Class", value=ioscore_data.class_.value)
     embed.add_field(name="Active Spec", value=ioscore_data.active_spec_name)
     embed.add_field(name="Realm", value=ioscore_data.realm)
-    add_dict_embed_field(
+    _add_dict_embed_field(
         embed,
         "Mythic Plus Scores",
         ioscore_data.mythic_plus_scores.__dict__,
@@ -72,8 +72,7 @@ def get_ioscore_embed(ioscore_data: IoscoreData) -> Embed:
 
 
 def get_best_run_embed(best_run_data: BestRunData) -> Embed:
-    # TODO
-    embed = get_base_embed()
+    embed = _get_base_embed()
 
     embed.set_thumbnail(url=best_run_data.thumbnail_url)
     embed.add_field(name="Name", value=best_run_data.name)
@@ -84,8 +83,7 @@ def get_best_run_embed(best_run_data: BestRunData) -> Embed:
 
 
 def get_highest_run_embed(highest_run_data: HighestRunData) -> Embed:
-    # TODO
-    embed = get_base_embed()
+    embed = _get_base_embed()
 
     embed.set_thumbnail(url=highest_run_data.thumbnail_url)
     embed.add_field(name="Name", value=highest_run_data.name)
