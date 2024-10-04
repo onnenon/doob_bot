@@ -24,4 +24,4 @@ jobs:
       - name: Mypy
         run: uv run mypy doob_bot
       - name: Ruff Checks
-        run: ruff check doob_bot
+        run: uv run ruff check doob_bot
