@@ -1,4 +1,5 @@
 import json
+import logging
 from typing import Any, Dict, List, Optional
 
 import requests
@@ -10,8 +11,8 @@ from doob_bot.models import (
     HighestRunData,
     IoscoreData,
 )
-from doob_bot.settings import LOGGER
 
+LOGGER = logging.getLogger(__name__)
 API_URL_BASE = "https://raider.io/api/v1/"
 HEADERS = {"Content-Type": "application/json"}
 

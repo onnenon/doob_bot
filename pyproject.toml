@@ -4,11 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "discord-py>=2.4.0",
-    "pydantic>=2.9.2",
-    "requests>=2.32.3",
-]
+dependencies = ["discord-py>=2.4.0", "pydantic>=2.9.2", "requests>=2.32.3"]
 
 [tool.uv]
 dev-dependencies = [
@@ -18,3 +14,6 @@ dev-dependencies = [
     "ruff>=0.6.8",
     "types-requests>=2.32.0.20240914",
 ]
+
+[tool.ruff.lint]
+extend-select = ["I"]

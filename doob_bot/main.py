@@ -1,9 +1,11 @@
+import logging
 from typing import Optional
 
 import discord
 from discord.ext import commands
 from discord.ext.commands.context import Context
 
+from doob_bot.config import BOT_TOKEN
 from doob_bot.embeds import (
     get_best_run_embed,
     get_char_info_embed,
@@ -17,11 +19,10 @@ from doob_bot.raider_io.service import (
     get_highest_run_data,
     get_ioscore_data,
 )
-from doob_bot.settings import BOT_TOKEN, LOGGER
 
-intents = discord.Intents.default()
-
-BOT = commands.Bot(command_prefix="#", intents=intents)
+LOGGER = logging.getLogger(__name__)
+INTENTS = discord.Intents.default()
+BOT = commands.Bot(command_prefix="#", intents=INTENTS)
 
 
 @BOT.event
