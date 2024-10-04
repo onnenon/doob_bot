@@ -21,7 +21,3 @@ jobs:
         run: uv sync --all-extras --dev
       - name: Run tests
         run: uv run pytest tests
-      - uses: codecov/codecov-action@v3
-        with:
-          files: ./.coverage
-          fail_ci_if_error: true

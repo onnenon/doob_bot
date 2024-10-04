@@ -1,7 +1,6 @@
 # Doob Bot
 
 ![checks workflow](https://github.com/onnenon/doob_bot/actions/workflows/main.yml/badge.svg)
-[![codecov](https://codecov.io/gh/onnenon/doob_bot/branch/main/graph/badge.svg?token=9R3Oce1I8W)](https://codecov.io/gh/onnenon/doob_bot)
 [![Maintainability](https://api.codeclimate.com/v1/badges/673d65713d212728cd2c/maintainability)](https://codeclimate.com/github/onnenon/doob_bot/maintainability)
 
 A simple Raider.io bot for discord
