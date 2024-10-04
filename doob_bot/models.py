@@ -38,14 +38,11 @@ class Guild:
     realm: str
 
 
-@dataclass()
+@dataclass
 class CommandCharacterData:
     char_name: str
     realm: str
     region: str = "us"
-
-    def __post_init__(self):
-        self.region = self.region if self.region is not None else "us"
 
 
 class MythicPlusScores(BaseModel):
@@ -76,13 +73,15 @@ class CharacterInfoData(BaseModel):
     gear: Dict[str, Any]
     guild: Guild
     profile_url: str
+    # thumbnail_url: str
+    # name: str
+    # active_spec_name: str
+    # class_: str
+    # realm: str
 
 
 class IoscoreData(CharacterBaseData):
     mythic_plus_scores: MythicPlusScores
-
-    class Config:
-        extra = Extra.ignore
 
 
 class HighestRunData(CharacterBaseData):

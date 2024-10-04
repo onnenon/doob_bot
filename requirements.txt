@@ -1,9 +1,0 @@
-discord.py
-requests
-spylogger[pretty]
-mock
-nose
-rednose
-pytest
-coverage
-wheel

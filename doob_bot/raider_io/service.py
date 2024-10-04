@@ -21,7 +21,7 @@ def get_character_profile_info(
     fields: Optional[List[str]],
 ) -> Dict[str, Any]:
     field_str = get_query_string_for_fields_list(fields)
-    url = f"{API_URL_BASE}characters/profile?region={char_data.region}&realm={char_data.realm}&name={char_data.char_name}{field_str}"  # noqa: E501
+    url = f"{API_URL_BASE}characters/profile?region={char_data.region}&realm={char_data.realm}&name={char_data.char_name}{field_str}"
 
     LOGGER.debug(url)
 
@@ -31,14 +31,13 @@ def get_character_profile_info(
     return response_json
 
 
-def get_query_string_for_fields_list(fields: List[str]) -> str:
+def get_query_string_for_fields_list(fields: Optional[List[str]]) -> str:
     if not fields:
         return ""
 
     field_str = "&fields="
     for field in fields:
         field_str += f"{field}%2C"
-
     return field_str
 
 
