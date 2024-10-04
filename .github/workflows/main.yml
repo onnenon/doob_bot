@@ -21,3 +21,7 @@ jobs:
         run: uv sync --all-extras --dev
       - name: Run tests
         run: uv run pytest tests
+      - name: Mypy
+        run: uv run mypy doob_bot
+      - name: Ruff Checks
+        run: ruff check doob_bot
