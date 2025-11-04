@@ -1,6 +1,13 @@
 name: Checks
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   Checks:
@@ -12,16 +19,16 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
       - name: Install uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
       - name: Install deps
         run: uv python install
       - name: Install the project
         run: uv sync --all-extras --dev
+      - name: Check Types
+        run: uv run ty check doob_bot
+      - name: Lint
+        run: uv run ruff check doob_bot
       - name: Run tests
         run: uv run pytest tests
-      - name: Mypy
-        run: uv run mypy doob_bot
-      - name: Ruff Checks
-        run: uv run ruff check doob_bot

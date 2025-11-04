@@ -92,9 +92,11 @@ async def highest(
 
 
 def main():
-    if not BOT_TOKEN:
+    try:
+        assert BOT_TOKEN
+        BOT.run(BOT_TOKEN)
+    except AssertionError:
         print("No bot token found, exiting...")
-    BOT.run(BOT_TOKEN)
 
 
 if __name__ == "__main__":
