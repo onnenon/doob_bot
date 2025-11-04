@@ -9,9 +9,9 @@ dependencies = ["discord-py>=2.4.0", "pydantic>=2.9.2", "requests>=2.32.3"]
 [dependency-groups]
 dev = [
     "coverage>=7.6.1",
-    "mypy>=1.11.2",
-    "pytest>=8.3.3",
     "ruff>=0.6.8",
+    "ty>=0.0.1a25",
+    "pytest>=8.3.3",
     "types-requests>=2.32.0.20240914",
 ]
 
